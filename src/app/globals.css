@@ -39,23 +39,74 @@ body {
   outline-offset: 2px;
 }
 
-@keyframes fadeIn {
+/* ==========================================================================
+   Hardware-Accelerated Animation & Motion System
+   Targeting 60fps with transform3d and opacity
+   ========================================================================== */
+
+/* Hardware acceleration utility */
+.hardware-accelerated {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* 1. Staggered Entrance Animations */
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: scale(0.98);
+    transform: translate3d(0, 20px, 0);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+
+/* 2. Ken Burns Subtle Architectural Zoom */
+@keyframes kenBurnsSubtle {
+  from {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.animate-ken-burns {
+  animation: kenBurnsSubtle 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 3. Modal / Drawer Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
   }
 }
 
 @keyframes slideLeft {
   from {
-    transform: translateX(100%);
+    transform: translate3d(100%, 0, 0);
   }
   to {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -65,4 +116,41 @@ body {
 
 .animate-slide-left {
   animation: slideLeft 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 4. Progressive Line Animation */
+@keyframes drawLine {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.animate-draw-line {
+  transform-origin: top;
+  animation: drawLine 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ==========================================================================
+   Accessibility: Reduced Motion Protection
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-ken-burns,
+  .animate-fade-in-up,
+  .animate-draw-line {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }
