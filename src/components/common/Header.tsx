@@ -275,6 +275,14 @@ export default function Header() {
             </Link>
 
             <Link
+              href="/#deep-explore"
+              className="px-3 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center gap-1.5 text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50 group"
+            >
+              <Compass className="w-3.5 h-3.5 text-[#EEC10E] group-hover:rotate-45 transition-transform duration-300" />
+              <span>3D Deep Explorer</span>
+            </Link>
+
+            <Link
               href="/contact"
               className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
                 isActive("/contact")
@@ -377,10 +385,22 @@ export default function Header() {
                 </Link>
                 <Link
                   href="/estimator"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50 flex items-center justify-between"
                 >
                   <span>Interior Budget Estimator</span>
                   <span className="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">Interactive</span>
+                </Link>
+                <Link
+                  href="/#deep-explore"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50 flex items-center justify-between"
+                >
+                  <span className="flex items-center gap-2">
+                    <Compass className="w-4 h-4 text-[#EEC10E]" />
+                    <span>3D Deep Interior Explorer</span>
+                  </span>
+                  <span className="text-[10px] bg-[#EEC10E]/20 text-[#1F3B6B] font-extrabold px-2 py-0.5 rounded">3D Tour</span>
                 </Link>
                 <Link
                   href="/blog"

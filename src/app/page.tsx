@@ -31,6 +31,7 @@ import { manufacturingSteps } from "@/data/manufacturingData";
 import EnquiryForm from "@/components/forms/EnquiryForm";
 import AnimatedCounter from "@/components/common/AnimatedCounter";
 import ScrollReveal from "@/components/common/ScrollReveal";
+import DeepInteriorExplorer from "@/components/interactive/DeepInteriorExplorer";
 
 const FAQ_ITEMS = [
   {
@@ -289,6 +290,26 @@ export default function HomePage() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* SECTION: 3D DEEP INTERIOR EXPLORATION */}
+      <section id="deep-explore" className="py-20 bg-[#0B1526] text-white relative overflow-hidden border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEC10E]/15 text-[#EEC10E] text-xs font-bold uppercase tracking-wider mb-3 border border-[#EEC10E]/30 font-mono">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Scroll & Depth Exploration</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+              Step Deep Inside Our Interior Architecture
+            </h2>
+            <p className="text-sm sm:text-base text-slate-300 mt-3 leading-relaxed">
+              Explore how each space transitions from macro architectural volume down to internal Blum runners and microscopic 0.5mm PUR moisture seals.
+            </p>
+          </div>
+
+          <DeepInteriorExplorer />
         </div>
       </section>
 

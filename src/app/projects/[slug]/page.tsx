@@ -18,6 +18,7 @@ import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { projectsData } from "@/data/projectsData";
 import { getWhatsAppUrl } from "@/data/companyData";
 import EnquiryForm from "@/components/forms/EnquiryForm";
+import ProjectDepthViewer from "@/components/interactive/ProjectDepthViewer";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -136,6 +137,11 @@ export default async function ProjectDetailPage({ params }: Props) {
                   </div>
                 </div>
               )}
+
+              {/* Interactive 3D Spatial Depth Inspection */}
+              <div className="space-y-4">
+                <ProjectDepthViewer project={project} />
+              </div>
 
               {/* Design Brief & Objective */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
