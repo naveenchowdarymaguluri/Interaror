@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import FloatingActions from "@/components/common/FloatingActions";
+import ScrollProgressBar from "@/components/common/ScrollProgressBar";
 import { companyConfig } from "@/data/companyData";
 
 const manrope = Manrope({
@@ -118,6 +119,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans bg-[#FEFEFE] text-[#1F3B6B] antialiased selection:bg-[#EEC10E] selection:text-[#1F3B6B]">
+        <ScrollProgressBar />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

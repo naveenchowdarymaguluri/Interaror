@@ -32,6 +32,8 @@ import EnquiryForm from "@/components/forms/EnquiryForm";
 import AnimatedCounter from "@/components/common/AnimatedCounter";
 import ScrollReveal from "@/components/common/ScrollReveal";
 import DeepInteriorExplorer from "@/components/interactive/DeepInteriorExplorer";
+import BeforeAfterSlider from "@/components/interactive/BeforeAfterSlider";
+import MaterialFinishesVisualizer from "@/components/interactive/MaterialFinishesVisualizer";
 
 const FAQ_ITEMS = [
   {
@@ -89,24 +91,28 @@ export default function HomePage() {
   return (
     <div className="flex flex-col w-full bg-[#FEFEFE]">
       {/* SECTION 1: HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50/90 via-white to-white pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-slate-100 bg-architectural-grid">
+        {/* Atmospheric Floating Light Orbs */}
+        <div className="absolute top-10 left-1/4 w-96 h-96 bg-[#EEC10E]/15 rounded-full blur-3xl animate-glow-pulse pointer-events-none -z-0" />
+        <div className="absolute top-20 right-10 w-96 h-96 bg-[#1F3B6B]/10 rounded-full blur-3xl pointer-events-none -z-0" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left Content Column with Staggered Entrance */}
             <div className="lg:col-span-7 space-y-6 text-left">
-              <div className="animate-fade-in-up inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200/80 text-xs font-semibold text-[#1F3B6B]">
-                <span className="w-2 h-2 rounded-full bg-[#EEC10E]" />
-                <span>Interior Architecture & Modular Joinery</span>
+              <div className="animate-fade-in-up inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#EEC10E]/50 shadow-sm text-xs font-bold text-[#1F3B6B]">
+                <span className="w-2 h-2 rounded-full bg-[#EEC10E] animate-ping" />
+                <span className="font-mono uppercase tracking-wider text-[11px]">Bespoke Architectural Interiors & Modular Factory</span>
               </div>
 
-              <h1 className="animate-fade-in-up delay-150 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1F3B6B] tracking-tight leading-[1.12]">
+              <h1 className="animate-fade-in-up delay-150 text-4xl sm:text-5xl lg:text-6xl font-black text-[#1F3B6B] tracking-tight leading-[1.12]">
                 Thoughtfully Designed Spaces.{" "}
-                <span className="text-slate-900 block mt-2">
+                <span className="block mt-2 bg-gradient-to-r from-[#1F3B6B] via-[#D4A705] to-[#1F3B6B] bg-clip-text text-transparent">
                   Beautifully Crafted Interiors.
                 </span>
               </h1>
 
-              <p className="animate-fade-in-up delay-300 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
+              <p className="animate-fade-in-up delay-300 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
                 From modular kitchens and custom wardrobes to complete home and office interiors, Office Elevate brings together thoughtful design, quality craftsmanship and functional solutions tailored to your space.
               </p>
 
@@ -115,46 +121,49 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => setShowConsultModal(true)}
-                  className="inline-flex items-center justify-center gap-2 bg-[#EEC10E] hover:bg-[#D9AD09] text-[#1F3B6B] font-extrabold text-sm px-7 py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
+                  className="relative overflow-hidden group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#EEC10E] via-[#F3C920] to-[#E5B708] hover:from-[#E5B708] hover:to-[#D4A705] text-[#1F3B6B] font-black text-sm px-8 py-4 rounded-xl shadow-gold-md hover:shadow-gold-lg transition-all duration-300 transform hover:-translate-y-1"
                 >
-                  <span>Book a Free Consultation</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span className="relative z-10 flex items-center gap-2">
+                    <span>Book a Free Consultation</span>
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" />
+                  </span>
+                  <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
                 </button>
 
                 <Link
                   href="/projects"
-                  className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#1F3B6B] font-bold text-sm px-7 py-4 rounded-xl border border-slate-200 shadow-sm transition-all duration-300 hover:border-slate-300 hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-2 bg-white/90 backdrop-blur-sm hover:bg-slate-50 text-[#1F3B6B] font-bold text-sm px-7 py-4 rounded-xl border border-slate-200/90 shadow-sm hover:shadow-md transition-all duration-300 hover:border-[#EEC10E]/60 hover:-translate-y-1"
                 >
                   <span>Explore Our Projects</span>
                 </Link>
               </div>
 
-              {/* Quick Trust Highlights with Stagger */}
-              <div className="animate-fade-in-up delay-500 grid grid-cols-3 gap-4 pt-6 border-t border-slate-100 max-w-lg">
+              {/* Quick Trust Highlights with Stagger in Frosted Glass Container */}
+              <div className="animate-fade-in-up delay-500 grid grid-cols-3 gap-4 p-4 rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/80 max-w-lg shadow-sm">
                 <div>
                   <div className="text-xl sm:text-2xl font-black text-[#1F3B6B]">
                     <AnimatedCounter value="0.5mm" />
                   </div>
-                  <div className="text-xs text-slate-500 font-medium mt-0.5">CNC Precision</div>
+                  <div className="text-[11px] text-slate-500 font-semibold mt-0.5">CNC Precision</div>
                 </div>
                 <div>
                   <div className="text-xl sm:text-2xl font-black text-[#1F3B6B]">
                     <AnimatedCounter value="100%" />
                   </div>
-                  <div className="text-xs text-slate-500 font-medium mt-0.5">BWP Marine Carcass</div>
+                  <div className="text-[11px] text-slate-500 font-semibold mt-0.5">BWP Marine Carcass</div>
                 </div>
                 <div>
                   <div className="text-xl sm:text-2xl font-black text-[#1F3B6B]">
                     <AnimatedCounter value="10 Yrs*" />
                   </div>
-                  <div className="text-xs text-slate-500 font-medium mt-0.5">Hardware Standard</div>
+                  <div className="text-[11px] text-slate-500 font-semibold mt-0.5">Hardware Standard</div>
                 </div>
               </div>
             </div>
 
-            {/* Right Architectural Image Composition with Ken Burns Effect */}
+            {/* Right Architectural Image Composition with Ken Burns & Floating Badges */}
             <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto rounded-3xl overflow-hidden shadow-2xl border border-slate-200 aspect-[4/5] max-w-md lg:max-w-none">
+              <div className="relative mx-auto rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 aspect-[4/5] max-w-md lg:max-w-none group">
                 <Image
                   src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
                   alt="Office Elevate Contemporary Modular Interior"
@@ -162,14 +171,25 @@ export default function HomePage() {
                   className="object-cover animate-ken-burns"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1F3B6B]/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1F3B6B]/85 via-transparent to-transparent pointer-events-none" />
 
-                {/* Overlaid Floating Architectural Tag */}
-                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-white/40 transition-all duration-300 hover:shadow-xl">
+                {/* Overlaid Floating Upper Badge */}
+                <div className="absolute top-5 right-5 p-3 rounded-2xl bg-white/90 backdrop-blur-md shadow-xl border border-white/50 animate-float z-20 flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-[#EEC10E]/20 text-[#1F3B6B] flex items-center justify-center font-black text-xs">
+                    ★
+                  </div>
+                  <div className="text-left">
+                    <span className="text-[9px] uppercase font-bold tracking-wider text-slate-500 block">Quality Guarantee</span>
+                    <span className="text-xs font-bold text-[#1F3B6B]">10-Yr Hardware Standard</span>
+                  </div>
+                </div>
+
+                {/* Overlaid Floating Lower Architectural Tag */}
+                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md shadow-2xl border border-white/60 transition-all duration-300 hover:shadow-gold-sm animate-float-delayed z-20">
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-[#EEC10E] block">
-                        Featured Execution
+                      <span className="text-[10px] uppercase font-bold tracking-wider text-[#EEC10E] block font-mono">
+                        ✦ Featured Execution
                       </span>
                       <h4 className="text-xs sm:text-sm font-bold text-[#1F3B6B]">
                         Contemporary Penthouse & Modular Kitchen
@@ -177,7 +197,7 @@ export default function HomePage() {
                     </div>
                     <Link
                       href="/projects"
-                      className="w-8 h-8 rounded-full bg-[#1F3B6B] text-white flex items-center justify-center flex-shrink-0 hover:bg-[#EEC10E] hover:text-[#1F3B6B] transition-colors duration-200"
+                      className="w-9 h-9 rounded-full bg-[#1F3B6B] text-white flex items-center justify-center flex-shrink-0 hover:bg-[#EEC10E] hover:text-[#1F3B6B] transition-colors duration-200 shadow-md"
                       aria-label="View Project"
                     >
                       <ArrowRight className="w-4 h-4" />
@@ -187,24 +207,27 @@ export default function HomePage() {
               </div>
 
               {/* Decorative Subtle Geometry */}
-              <div className="absolute -top-4 -right-4 w-28 h-28 bg-[#EEC10E]/15 rounded-full blur-2xl -z-10" />
-              <div className="absolute -bottom-4 -left-4 w-36 h-36 bg-[#1F3B6B]/10 rounded-full blur-2xl -z-10" />
+              <div className="absolute -top-4 -right-4 w-32 h-32 bg-[#EEC10E]/20 rounded-full blur-2xl -z-10" />
+              <div className="absolute -bottom-4 -left-4 w-40 h-40 bg-[#1F3B6B]/15 rounded-full blur-2xl -z-10" />
             </div>
           </div>
         </div>
       </section>
 
       {/* SECTION 2: TRUST & CAPABILITIES METRICS */}
-      <section className="bg-white py-12 border-b border-slate-100">
+      <section className="bg-white py-14 border-b border-slate-100 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
               {companyConfig.metrics.map((metric, idx) => (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl bg-slate-50/70 border border-slate-100 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[#EEC10E]/60 hover:bg-white"
+                  className="group relative overflow-hidden p-6 rounded-2xl bg-slate-50/80 border border-slate-200/80 text-left transition-all duration-300 hover:-translate-y-1.5 shadow-navy-card hover:shadow-navy-elevated hover:border-[#EEC10E] hover:bg-white hardware-accelerated"
                 >
-                  <div className="text-3xl sm:text-4xl font-black text-[#1F3B6B] tracking-tight">
+                  {/* Top Gold Accent Line */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#EEC10E] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="text-3xl sm:text-4xl font-black text-[#1F3B6B] tracking-tight group-hover:text-slate-900 transition-colors">
                     <AnimatedCounter value={metric.value} />
                   </div>
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-800 mt-1">
@@ -313,6 +336,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* SECTION: BEFORE & AFTER TRANSFORMATION EXPERIENCE */}
+      <section className="py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 border-b border-slate-100 relative overflow-hidden bg-architectural-dots">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <BeforeAfterSlider />
+        </div>
+      </section>
+
       {/* SECTION 4: PRODUCTS & MODULAR SOLUTIONS */}
       <section className="py-20 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -371,6 +401,13 @@ export default function HomePage() {
               <ArrowRight className="w-4 h-4 text-[#EEC10E]" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* SECTION: TACTILE ARCHITECTURAL MATERIAL LIBRARY */}
+      <section className="py-20 bg-slate-950 text-white relative overflow-hidden border-b border-slate-850">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <MaterialFinishesVisualizer />
         </div>
       </section>
 
@@ -579,12 +616,15 @@ export default function HomePage() {
 
           {/* Manufacturing Step Highlights with Progressive Connector Line */}
           <div className="relative">
-            {/* Desktop connecting progress line */}
-            <div className="hidden md:block absolute top-12 left-20 right-20 h-[2px] bg-gradient-to-r from-[#EEC10E]/20 via-[#EEC10E] to-[#EEC10E]/20 z-0 pointer-events-none" />
+            {/* Desktop connecting progress line with glowing aura */}
+            <div className="hidden md:block absolute top-12 left-20 right-20 h-[3px] bg-gradient-to-r from-[#EEC10E]/20 via-[#EEC10E] to-[#EEC10E]/20 z-0 pointer-events-none shadow-[0_0_12px_rgba(238,193,14,0.6)]" />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
               {manufacturingSteps.slice(0, 3).map((step, idx) => (
                 <ScrollReveal key={step.stepNumber} delayMs={idx * 100}>
-                  <div className="group bg-white/5 border border-white/10 hover:border-[#EEC10E]/60 rounded-2xl p-6 text-left hover:bg-white/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl flex flex-col justify-between h-full hardware-accelerated">
+                  <div className="group relative overflow-hidden bg-white/5 border border-white/10 hover:border-[#EEC10E]/80 rounded-2xl p-6 text-left hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(238,193,14,0.25)] flex flex-col justify-between h-full hardware-accelerated">
+                    {/* Light sweep on card hover */}
+                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+
                     <div>
                       <div className="flex items-center justify-between mb-4">
                         <span className="text-2xl font-black text-[#EEC10E] group-hover:scale-105 transition-transform duration-200">{step.stepNumber}</span>
@@ -609,7 +649,7 @@ export default function HomePage() {
             <button
               type="button"
               onClick={() => setShowConsultModal(true)}
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl border border-white/20 transition-all duration-200 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#EEC10E]/50"
             >
               <span>Discuss Your Custom Furniture Requirements</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#EEC10E]" />
@@ -667,7 +707,7 @@ export default function HomePage() {
               },
             ].map((item, idx) => (
               <ScrollReveal key={idx} delayMs={idx * 50}>
-                <div className="group p-6 rounded-2xl bg-slate-50 border border-slate-200/80 text-left hover:border-[#1F3B6B] hover:bg-white hover:-translate-y-1 hover:shadow-xl transition-all duration-300 h-full hardware-accelerated">
+                <div className="group p-6 rounded-2xl bg-slate-50 border border-slate-200/80 text-left hover:border-[#1F3B6B] hover:bg-white hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300 h-full hardware-accelerated relative overflow-hidden">
                   <div className="text-3xl font-black text-[#1F3B6B] mb-2 group-hover:text-[#EEC10E] transition-colors duration-200">{item.step}</div>
                   <h3 className="font-bold text-base text-slate-900 mb-1 group-hover:text-[#1F3B6B] transition-colors duration-200">{item.title}</h3>
                   <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
@@ -718,7 +758,7 @@ export default function HomePage() {
               },
             ].map((t, idx) => (
               <ScrollReveal key={idx} delayMs={idx * 80}>
-                <div className="group p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#EEC10E]/60 transition-all duration-300 hover:-translate-y-1.5 text-left flex flex-col justify-between h-full hardware-accelerated">
+                <div className="group p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-2xl hover:border-[#EEC10E]/60 transition-all duration-300 hover:-translate-y-1.5 text-left flex flex-col justify-between h-full hardware-accelerated">
                   <div>
                     <Quote className="w-8 h-8 text-[#EEC10E] mb-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
                     <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
@@ -740,12 +780,18 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 10: HIGH-IMPACT CONSULTATION CTA BANNER */}
-      <section className="py-20 bg-[#1F3B6B] text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-[#122442] via-[#1F3B6B] to-[#0A1527] text-white relative overflow-hidden">
+        {/* Ambient Glows */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#EEC10E]/15 rounded-full blur-3xl animate-glow-pulse pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute inset-0 bg-blueprint-grid opacity-15 pointer-events-none" />
+
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEC10E]/20 text-[#EEC10E] text-xs font-bold uppercase tracking-wider">
-            Start Your Journey
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EEC10E]/20 text-[#EEC10E] text-xs font-bold uppercase tracking-wider border border-[#EEC10E]/30 font-mono">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Start Your Interior Journey</span>
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
             Let&apos;s Create a Space That Works Beautifully for You.
           </h2>
           <p className="text-slate-200 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
@@ -756,27 +802,26 @@ export default function HomePage() {
             <button
               type="button"
               onClick={() => setShowConsultModal(true)}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#EEC10E] hover:bg-[#D9AD09] text-[#1F3B6B] font-extrabold text-sm px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all"
+              className="relative overflow-hidden group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#EEC10E] via-[#F3C920] to-[#E5B708] hover:from-[#E5B708] hover:to-[#D4A705] text-[#1F3B6B] font-black text-sm px-9 py-4 rounded-xl shadow-gold-md hover:shadow-gold-lg transition-all duration-300 transform hover:-translate-y-1"
             >
-              <span>Book a Consultation</span>
-              <ArrowRight className="w-4 h-4" />
+              <span className="relative z-10 flex items-center gap-2">
+                <span>Book a Consultation</span>
+                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" />
+              </span>
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
             </button>
 
             <a
               href={getWhatsAppUrl("Hello Office Elevate, I would like to book an interior design consultation.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-sm px-8 py-4 rounded-xl shadow transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-sm px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
               <MessageCircle className="w-5 h-5" />
-              <span>WhatsApp Us</span>
+              <span>WhatsApp Us Directly</span>
             </a>
           </div>
         </div>
-
-        {/* Subtle Decorative Geometry */}
-        <div className="absolute top-0 right-0 w-80 h-80 bg-[#EEC10E]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
       </section>
 
       {/* SECTION 11: PRACTICAL FAQ ACCORDION */}

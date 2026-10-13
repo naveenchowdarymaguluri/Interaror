@@ -186,6 +186,106 @@ body {
   background-size: 100% 4px;
 }
 
+/* 6. Luxury Animations & Atmosphere */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatSlow 7s ease-in-out infinite 2.5s;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+.animate-glow-pulse {
+  animation: pulseGlow 5s ease-in-out infinite;
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmerSweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Luxury Shadows */
+.shadow-gold-sm {
+  box-shadow: 0 4px 14px 0 rgba(238, 193, 14, 0.25);
+}
+
+.shadow-gold-md {
+  box-shadow: 0 8px 26px -2px rgba(238, 193, 14, 0.35);
+}
+
+.shadow-gold-lg {
+  box-shadow: 0 16px 38px -4px rgba(238, 193, 14, 0.45);
+}
+
+.shadow-navy-card {
+  box-shadow: 0 16px 40px -12px rgba(31, 59, 107, 0.12), 0 0 1px rgba(31, 59, 107, 0.15);
+}
+
+.shadow-navy-elevated {
+  box-shadow: 0 24px 50px -15px rgba(31, 59, 107, 0.2);
+}
+
+/* Architectural Background Patterns */
+.bg-architectural-grid {
+  background-image: 
+    linear-gradient(to right, rgba(31, 59, 107, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31, 59, 107, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.bg-architectural-dots {
+  background-image: radial-gradient(rgba(31, 59, 107, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-luxury-dark-grid {
+  background-image: 
+    linear-gradient(to right, rgba(238, 193, 14, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(238, 193, 14, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Text Gradients */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #EEC10E 0%, #D4A705 50%, #C49603 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navy-gradient-text {
+  background: linear-gradient(135deg, #1F3B6B 0%, #0E1A2D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* ==========================================================================
    Accessibility: Reduced Motion Protection
    ========================================================================== */

@@ -253,44 +253,13 @@ export default function Header() {
 
             <Link
               href="/manufacturing"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors ${
                 isActive("/manufacturing")
-                  ? "text-[#1F3B6B] bg-slate-100/80 font-bold"
+                  ? "text-[#1F3B6B] bg-slate-100/90 font-bold"
                   : "text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50"
               }`}
             >
               Manufacturing
-            </Link>
-
-            <Link
-              href="/estimator"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center gap-1.5 ${
-                isActive("/estimator")
-                  ? "text-[#1F3B6B] bg-slate-100/80 font-bold"
-                  : "text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50"
-              }`}
-            >
-              <Calculator className="w-3.5 h-3.5 text-amber-500" />
-              <span>Estimator</span>
-            </Link>
-
-            <Link
-              href="/#deep-explore"
-              className="px-3 py-2 rounded-lg text-sm font-semibold transition-colors flex items-center gap-1.5 text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50 group"
-            >
-              <Compass className="w-3.5 h-3.5 text-[#EEC10E] group-hover:rotate-45 transition-transform duration-300" />
-              <span>3D Deep Explorer</span>
-            </Link>
-
-            <Link
-              href="/contact"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
-                isActive("/contact")
-                  ? "text-[#1F3B6B] bg-slate-100/80 font-bold"
-                  : "text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50"
-              }`}
-            >
-              Contact Us
             </Link>
           </nav>
 
@@ -299,9 +268,13 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setConsultationModalOpen(true)}
-              className="bg-[#EEC10E] hover:bg-[#D9AD09] text-[#1F3B6B] font-extrabold text-xs uppercase tracking-wider px-5 py-3 rounded-xl shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+              className="relative overflow-hidden group bg-gradient-to-r from-[#EEC10E] via-[#F3C920] to-[#E5B708] hover:from-[#E5B708] hover:to-[#D4A705] text-[#1F3B6B] font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-gold-sm hover:shadow-gold-md transition-all duration-300 transform hover:-translate-y-0.5"
             >
-              Get Free Consultation
+              <span className="relative z-10 flex items-center gap-2">
+                <span>Get Free Consultation</span>
+                <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+              </span>
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
             </button>
           </div>
 
