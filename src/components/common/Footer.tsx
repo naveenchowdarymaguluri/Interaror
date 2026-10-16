@@ -25,7 +25,7 @@ export default function Footer() {
           <div className="lg:col-span-2 space-y-5">
             <Logo variant="dark" showTagline={true} />
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              Office Elevate delivers thoughtful interior architecture and factory-engineered modular furniture. From bespoke residential living spaces and modular kitchens to corporate headquarters, we unite architectural integrity with precision manufacturing.
+              Terraform Modular delivers thoughtful interior architecture and factory-engineered modular furniture. From bespoke residential living spaces and modular kitchens to corporate headquarters, we unite architectural integrity with precision manufacturing.
             </p>
 
             <div className="pt-2 flex flex-wrap gap-2 text-xs">
@@ -189,7 +189,7 @@ export default function Footer() {
           </div>
 
           <div className="text-center md:text-right">
-            © {new Date().getFullYear()} Office Elevate. All rights reserved.
+            © {new Date().getFullYear()} Terraform Modular. All rights reserved.
           </div>
         </div>
       </div>

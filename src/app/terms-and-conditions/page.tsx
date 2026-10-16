@@ -4,9 +4,9 @@ import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { companyConfig } from "@/data/companyData";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | Office Elevate",
+  title: "Terms and Conditions | Terraform Modular",
   description:
-    "Terms and Conditions governing the use of the Office Elevate website, consultation bookings, and quotation requests.",
+    "Terms and Conditions governing the use of the Terraform Modular website, consultation bookings, and quotation requests.",
 };
 
 export default function TermsPage() {
@@ -19,7 +19,7 @@ export default function TermsPage() {
             Terms & Conditions
           </h1>
           <p className="text-xs text-slate-500 mt-2">
-            Last updated: October 2026 • Office Elevate Modular Solutions
+            Last updated: October 2026 • Terraform Modular Modular Solutions
           </p>
         </div>
       </section>
@@ -29,7 +29,7 @@ export default function TermsPage() {
           <div className="space-y-3">
             <h2 className="text-xl font-bold text-[#1F3B6B]">1. Website Terms of Use</h2>
             <p>
-              By accessing and using this website, you agree to comply with and be bound by these terms. All architectural drawings, photographs, text, and brand assets displayed on this website are the intellectual property of Office Elevate or licensed partners.
+              By accessing and using this website, you agree to comply with and be bound by these terms. All architectural drawings, photographs, text, and brand assets displayed on this website are the intellectual property of Terraform Modular or licensed partners.
             </p>
           </div>
 

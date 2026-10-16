@@ -33,10 +33,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) return { title: "Product Not Found" };
 
   return {
-    title: `${product.title} | Office Elevate Modular Furniture`,
+    title: `${product.title} | Terraform Modular Modular Furniture`,
     description: product.shortDescription,
     openGraph: {
-      title: `${product.title} — Office Elevate`,
+      title: `${product.title} — Terraform Modular`,
       description: product.shortDescription,
       images: [{ url: product.primaryImage }],
     },
@@ -52,7 +52,7 @@ export default async function ProductDetailPage({ params }: Props) {
   }
 
   const waUrl = getWhatsAppUrl(
-    `Hello Office Elevate, I am interested in the ${product.title} (${product.categoryName}). Could you share pricing details and material catalog?`
+    `Hello Terraform Modular, I am interested in the ${product.title} (${product.categoryName}). Could you share pricing details and material catalog?`
   );
 
   return (

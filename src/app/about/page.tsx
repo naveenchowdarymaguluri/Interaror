@@ -19,7 +19,7 @@ import { companyConfig } from "@/data/companyData";
 export const metadata: Metadata = {
   title: "About Us | Architectural Precision & Modular Excellence",
   description:
-    "Learn about Office Elevate, our architectural philosophy, factory-engineered modular joinery, and commitment to reliable, enduring interior craftsmanship.",
+    "Learn about Terraform Modular, our architectural philosophy, factory-engineered modular joinery, and commitment to reliable, enduring interior craftsmanship.",
 };
 
 export default function AboutPage() {
@@ -37,7 +37,7 @@ export default function AboutPage() {
               Bridging Architectural Design & Precision Manufacturing
             </h1>
             <p className="text-base sm:text-lg text-slate-600 mt-4 leading-relaxed">
-              Office Elevate was founded on a simple conviction: modern spaces deserve both thoughtful architectural vision and industrial modular execution that lasts for decades.
+              Terraform Modular was founded on a simple conviction: modern spaces deserve both thoughtful architectural vision and industrial modular execution that lasts for decades.
             </p>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function AboutPage() {
                 Traditional interior fit-outs in India have long suffered from unpredictable manual carpentry: delayed timelines, toxic fumes on-site, uneven hand cuts, and moisture-prone edge sealing that fails within a few monsoons.
               </p>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                At <strong>Office Elevate</strong>, we eliminated that friction. We integrated architectural space planning directly with automated modular machinery. Our designs are developed in 3D with millimeter-accurate CAD models and fabricated in our controlled manufacturing facility using computerized beam saws and reactive Polyurethane (PUR) edge banding.
+                At <strong>Terraform Modular</strong>, we eliminated that friction. We integrated architectural space planning directly with automated modular machinery. Our designs are developed in 3D with millimeter-accurate CAD models and fabricated in our controlled manufacturing facility using computerized beam saws and reactive Polyurethane (PUR) edge banding.
               </p>
               <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
                 The result is clean, elegant living and workspace environments delivered on predictable timelines with uncompromising material standards.
@@ -84,7 +84,7 @@ export default function AboutPage() {
               <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/3] border border-slate-200">
                 <Image
                   src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-                  alt="Office Elevate Interior Design Studio Work"
+                  alt="Terraform Modular Interior Design Studio Work"
                   fill
                   className="object-cover"
                 />
@@ -169,7 +169,7 @@ export default function AboutPage() {
       <section className="py-16 bg-[#1F3B6B] text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
-            Meet the Minds Behind Office Elevate
+            Meet the Minds Behind Terraform Modular
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
             Architects, Joinery Engineers & Project Directors

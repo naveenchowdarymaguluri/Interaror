@@ -25,7 +25,7 @@ export const blogPosts: BlogPost[] = [
       "A clear, practical breakdown of Boiling Water Proof (BWP) Plywood and High-Density Moisture-Resistant (HDHMR) boards for Indian homes.",
     readTime: "5 min read",
     publishedDate: "October 8, 2026",
-    author: "Office Elevate Technical Team",
+    author: "Terraform Modular Technical Team",
     coverImage:
       "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
     content: [
@@ -57,7 +57,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "The Hybrid Recommendation",
         paragraph:
-          "At Office Elevate, we recommend the hybrid engineering approach: use calibrated 710 BWP Plywood for wet carcasses (kitchen bases and bathroom vanities) and high-density HDHMR for vertical wardrobe shutters, TV wall paneling, and dry cabinetry.",
+          "At Terraform Modular, we recommend the hybrid engineering approach: use calibrated 710 BWP Plywood for wet carcasses (kitchen bases and bathroom vanities) and high-density HDHMR for vertical wardrobe shutters, TV wall paneling, and dry cabinetry.",
       },
     ],
   },
@@ -70,7 +70,7 @@ export const blogPosts: BlogPost[] = [
       "From compact parallel galleys to social island kitchens, discover how the golden work triangle transforms your daily cooking experience.",
     readTime: "6 min read",
     publishedDate: "September 24, 2026",
-    author: "Office Elevate Design Studio",
+    author: "Terraform Modular Design Studio",
     coverImage:
       "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80",
     content: [
@@ -105,7 +105,7 @@ export const blogPosts: BlogPost[] = [
       "How forward-thinking corporate workplaces balance vibrant open collaboration with quiet focus zones using modular furniture and acoustic zoning.",
     readTime: "4 min read",
     publishedDate: "September 15, 2026",
-    author: "Office Elevate Commercial Studio",
+    author: "Terraform Modular Commercial Studio",
     coverImage:
       "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
     content: [

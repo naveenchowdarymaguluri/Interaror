@@ -16,13 +16,13 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: "Office Elevate — Premium Interior Design & Modular Furniture",
-    template: "%s | Office Elevate",
+    default: "Terraform Modular — Premium Interior Design & Modular Furniture",
+    template: "%s | Terraform Modular",
   },
   description:
     "Thoughtfully designed spaces. Beautifully crafted interiors. Premium residential and commercial interior solutions, modular kitchens, wardrobes, and customized furniture manufacturing.",
   keywords: [
-    "Office Elevate",
+    "Terraform Modular",
     "modular furniture",
     "interior design Bangalore",
     "modular kitchens",
@@ -31,36 +31,36 @@ export const metadata: Metadata = {
     "turnkey interior projects",
     "furniture manufacturing",
   ],
-  authors: [{ name: "Office Elevate Design Studio" }],
-  creator: "Office Elevate",
-  publisher: "Office Elevate",
+  authors: [{ name: "Terraform Modular Design Studio" }],
+  creator: "Terraform Modular",
+  publisher: "Terraform Modular",
   metadataBase: new URL("https://officeelevate.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Office Elevate — Thoughtfully Designed Spaces. Beautifully Crafted Interiors.",
+    title: "Terraform Modular — Thoughtfully Designed Spaces. Beautifully Crafted Interiors.",
     description:
-      "From modular kitchens and custom wardrobes to complete home and office interiors, Office Elevate brings together thoughtful design, quality craftsmanship, and functional solutions.",
+      "From modular kitchens and custom wardrobes to complete home and office interiors, Terraform Modular brings together thoughtful design, quality craftsmanship, and functional solutions.",
     url: "https://officeelevate.com",
-    siteName: "Office Elevate",
+    siteName: "Terraform Modular",
     locale: "en_IN",
     type: "website",
     images: [
       {
-        url: "/images/office-elevate-logo.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Office Elevate Brand Logo",
+        url: "/images/terraform-modular-logo.png",
+        width: 1101,
+        height: 180,
+        alt: "Terraform Modular logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Office Elevate — Premium Interior Design & Modular Furniture",
+    title: "Terraform Modular — Premium Interior Design & Modular Furniture",
     description:
       "Thoughtfully designed residential and commercial spaces with factory-engineered modular furniture solutions.",
-    images: ["/images/office-elevate-logo.jpg"],
+    images: ["/images/terraform-modular-logo.png"],
   },
   robots: {
     index: true,
@@ -78,10 +78,10 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     name: companyConfig.name,
-    legalName: "Office Elevate Modular Solutions",
+    legalName: "Terraform Modular",
     description: companyConfig.tagline,
     url: "https://officeelevate.com",
-    logo: "https://officeelevate.com/images/office-elevate-logo.jpg",
+    logo: "https://officeelevate.com/images/terraform-modular-logo.png",
     telephone: companyConfig.phone,
     email: companyConfig.email,
     address: {

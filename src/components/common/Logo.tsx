@@ -15,15 +15,15 @@ export default function Logo({ variant = "default", className = "", showTagline 
     <Link
       href="/"
       className={`inline-flex items-center gap-3 transition-opacity hover:opacity-95 focus:outline-none ${className}`}
-      aria-label="Office Elevate Home"
+      aria-label="Terraform Modular home"
     >
       {isDark ? (
         <div className="flex flex-col">
           <div className="bg-white/95 rounded-xl px-3 py-1.5 shadow-sm border border-white/20 inline-flex items-center">
             <div className="relative h-9 w-40 sm:w-44">
               <Image
-                src="/images/office-elevate-logo-cropped.png"
-                alt="Office Elevate Logo"
+                src="/images/terraform-modular-logo.png"
+                alt="Terraform Modular logo"
                 fill
                 className="object-contain object-left"
                 priority
@@ -40,8 +40,8 @@ export default function Logo({ variant = "default", className = "", showTagline 
         <div className="flex flex-col">
           <div className="relative h-10 sm:h-11 w-40 sm:w-48">
             <Image
-              src="/images/office-elevate-logo-cropped.png"
-              alt="Office Elevate Logo"
+              src="/images/terraform-modular-logo.png"
+              alt="Terraform Modular logo"
               fill
               className="object-contain object-left"
               priority

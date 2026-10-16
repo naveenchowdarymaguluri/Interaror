@@ -33,10 +33,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!service) return { title: "Service Not Found" };
 
   return {
-    title: `${service.title} | Office Elevate Interior Services`,
+    title: `${service.title} | Terraform Modular Interior Services`,
     description: service.shortDescription,
     openGraph: {
-      title: `${service.title} — Office Elevate`,
+      title: `${service.title} — Terraform Modular`,
       description: service.shortDescription,
       images: [{ url: service.heroImage }],
     },
@@ -52,7 +52,7 @@ export default async function ServiceDetailPage({ params }: Props) {
   }
 
   const waUrl = getWhatsAppUrl(
-    `Hello Office Elevate, I am looking for details and quotation on ${service.title}. Could you assist?`
+    `Hello Terraform Modular, I am looking for details and quotation on ${service.title}. Could you assist?`
   );
 
   return (

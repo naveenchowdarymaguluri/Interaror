@@ -40,7 +40,7 @@ export interface CompanyConfig {
 }
 
 export const companyConfig: CompanyConfig = {
-  name: "Office Elevate",
+  name: "Terraform Modular",
   tagline: "Thoughtfully Designed Spaces. Beautifully Crafted Interiors.",
   phone: "+919876543210", // Verified placeholder configurable by admin
   displayPhone: "+91 98765 43210",
@@ -105,7 +105,7 @@ export const companyConfig: CompanyConfig = {
 export function getWhatsAppUrl(customMessage?: string): string {
   const cleanNumber = companyConfig.whatsappNumber.replace(/[^0-9]/g, "");
   const defaultText =
-    "Hello Office Elevate team, I am interested in exploring interior design and modular furniture solutions for my space. Could you share consultation details?";
+    "Hello Terraform Modular team, I am interested in exploring interior design and modular furniture solutions for my space. Could you share consultation details?";
   const message = customMessage || defaultText;
   return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
 }

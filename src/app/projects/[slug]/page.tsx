@@ -36,10 +36,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return { title: "Project Not Found" };
 
   return {
-    title: `${project.title} | Office Elevate Portfolio`,
+    title: `${project.title} | Terraform Modular Portfolio`,
     description: project.designBrief,
     openGraph: {
-      title: `${project.title} — Office Elevate`,
+      title: `${project.title} — Terraform Modular`,
       description: project.designBrief,
       images: [{ url: project.thumbnail }],
     },
@@ -55,7 +55,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   }
 
   const waUrl = getWhatsAppUrl(
-    `Hello Office Elevate, I came across the case study for ${project.title} (${project.location}). I have a similar space requirement and would like to discuss design options.`
+    `Hello Terraform Modular, I came across the case study for ${project.title} (${project.location}). I have a similar space requirement and would like to discuss design options.`
   );
 
   return (

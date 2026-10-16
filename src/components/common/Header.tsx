@@ -72,7 +72,7 @@ export default function Header() {
             <a
               href={getPhoneUrl()}
               className="flex items-center gap-1.5 text-slate-200 hover:text-[#EEC10E] transition-colors"
-              aria-label="Call Office Elevate"
+              aria-label="Call Terraform Modular"
             >
               <Phone className="w-3.5 h-3.5 text-[#EEC10E]" />
               <span className="font-semibold">{companyConfig.displayPhone}</span>
@@ -83,7 +83,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors"
-              aria-label="WhatsApp Office Elevate"
+              aria-label="WhatsApp Terraform Modular"
             >
               <MessageCircle className="w-3.5 h-3.5" />
               <span className="font-semibold">WhatsApp Enquiry</span>

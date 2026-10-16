@@ -130,7 +130,7 @@ export default function BudgetEstimator() {
 
   const presetObject = PROPERTY_PRESETS.find((p) => p.id === selectedProperty);
 
-  const waSummary = `Hello Office Elevate, I configured an indicative estimate for my ${presetObject?.label} (~${area} sq.ft) with ${estimate.tierName}. Indicative range: ${formatLakhs(estimate.lower)} to ${formatLakhs(estimate.upper)}. Can we schedule an exact site measurement and quotation?`;
+  const waSummary = `Hello Terraform Modular, I configured an indicative estimate for my ${presetObject?.label} (~${area} sq.ft) with ${estimate.tierName}. Indicative range: ${formatLakhs(estimate.lower)} to ${formatLakhs(estimate.upper)}. Can we schedule an exact site measurement and quotation?`;
 
   return (
     <div className="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden">

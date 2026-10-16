@@ -7,7 +7,7 @@ import { ShieldCheck, HelpCircle, Sparkles } from "lucide-react";
 export const metadata: Metadata = {
   title: "Interior Budget Estimator | Calculate Cost for 1BHK, 2BHK, 3BHK, Villa & Office",
   description:
-    "Calculate an indicative interior design and modular furniture budget based on your carpet area, room scope, and finish tier with Office Elevate's transparent estimator.",
+    "Calculate an indicative interior design and modular furniture budget based on your carpet area, room scope, and finish tier with Terraform Modular's transparent estimator.",
 };
 
 export default function EstimatorPage() {

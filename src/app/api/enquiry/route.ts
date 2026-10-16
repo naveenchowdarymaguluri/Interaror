@@ -93,7 +93,7 @@ export async function POST(request: Request) {
 
     // Secure logging without dumping personal data in public channels
     console.log(
-      `[Office Elevate CRM Lead Captured] ID: ${leadRecord.id} | Name: ${leadRecord.fullName} | Type: ${leadRecord.projectType} | Location: ${leadRecord.location}`
+      `[Terraform Modular CRM Lead Captured] ID: ${leadRecord.id} | Name: ${leadRecord.fullName} | Type: ${leadRecord.projectType} | Location: ${leadRecord.location}`
     );
 
     return NextResponse.json({
@@ -116,7 +116,7 @@ export async function POST(request: Request) {
 export async function GET() {
   return NextResponse.json({
     status: "healthy",
-    service: "Office Elevate Secure Enquiry Gateway",
+    service: "Terraform Modular Secure Enquiry Gateway",
     timestamp: new Date().toISOString(),
   });
 }

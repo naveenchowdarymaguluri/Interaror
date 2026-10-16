@@ -9,7 +9,7 @@ import { blogPosts } from "@/data/blogData";
 export const metadata: Metadata = {
   title: "Blog & Design Ideas | Modular Interiors & Architecture Guide",
   description:
-    "Interior design guides, modular kitchen layout tips, wardrobe planning strategies, and material specifications by Office Elevate experts.",
+    "Interior design guides, modular kitchen layout tips, wardrobe planning strategies, and material specifications by Terraform Modular experts.",
 };
 
 export default function BlogPage() {

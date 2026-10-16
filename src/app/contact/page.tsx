@@ -15,9 +15,9 @@ import { companyConfig, getPhoneUrl, getWhatsAppUrl } from "@/data/companyData";
 import EnquiryForm from "@/components/forms/EnquiryForm";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Office Elevate Design Studio & Factory",
+  title: "Contact Us | Terraform Modular Design Studio & Factory",
   description:
-    "Connect with Office Elevate for your residential or commercial interior consultation. Book a studio visit, request a site measurement, or message us on WhatsApp.",
+    "Connect with Terraform Modular for your residential or commercial interior consultation. Book a studio visit, request a site measurement, or message us on WhatsApp.",
 };
 
 export default function ContactPage() {
@@ -151,7 +151,7 @@ export default function ContactPage() {
                   Need a quick budget estimate or want to send your floor plan PDF? Our team typically responds within 30 minutes on WhatsApp during business hours.
                 </p>
                 <a
-                  href={getWhatsAppUrl("Hello Office Elevate, I would like to enquire about an interior project.")}
+                  href={getWhatsAppUrl("Hello Terraform Modular, I would like to enquire about an interior project.")}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-xs py-3 rounded-xl transition-all shadow-sm"

@@ -20,7 +20,7 @@ import { manufacturingSteps, materialSpecifications } from "@/data/manufacturing
 export const metadata: Metadata = {
   title: "Manufacturing & Craftsmanship | Industrial Modular Joinery",
   description:
-    "Discover Office Elevate's precision modular manufacturing: computerized beam saws, PUR zero-joint edge banding, multi-spindle boring, and rigorous 7-point QA audits.",
+    "Discover Terraform Modular's precision modular manufacturing: computerized beam saws, PUR zero-joint edge banding, multi-spindle boring, and rigorous 7-point QA audits.",
 };
 
 export default function ManufacturingPage() {

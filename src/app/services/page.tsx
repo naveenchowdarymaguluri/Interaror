@@ -9,7 +9,7 @@ import { servicesData } from "@/data/servicesData";
 export const metadata: Metadata = {
   title: "Interior Design Services & Turnkey Solutions",
   description:
-    "Explore Office Elevate's 8 comprehensive interior services: Complete Home Interiors, Modular Kitchens, Wardrobes, Office Fit-outs, and Custom Furniture Manufacturing.",
+    "Explore Terraform Modular's 8 comprehensive interior services: Complete Home Interiors, Modular Kitchens, Wardrobes, Office Fit-outs, and Custom Furniture Manufacturing.",
 };
 
 export default function ServicesPage() {

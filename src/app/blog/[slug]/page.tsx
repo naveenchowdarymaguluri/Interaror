@@ -30,10 +30,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return { title: "Article Not Found" };
 
   return {
-    title: `${post.title} | Office Elevate Design Ideas`,
+    title: `${post.title} | Terraform Modular Design Ideas`,
     description: post.excerpt,
     openGraph: {
-      title: `${post.title} — Office Elevate`,
+      title: `${post.title} — Terraform Modular`,
       description: post.excerpt,
       images: [{ url: post.coverImage }],
     },

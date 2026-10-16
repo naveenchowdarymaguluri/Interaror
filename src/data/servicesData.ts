@@ -102,7 +102,7 @@ export const servicesData: ServiceItem[] = [
       "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1000&q=80",
     ],
     overview:
-      "The kitchen is the functional heartbeat of any home. Office Elevate designs and manufactures modular kitchens engineered specifically for Indian cooking conditions—resisting heat, moisture, turmeric, and intensive daily usage. Available in L-Shaped, U-Shaped, Parallel, Island, and Straight layouts with European soft-closing mechanisms.",
+      "The kitchen is the functional heartbeat of any home. Terraform Modular designs and manufactures modular kitchens engineered specifically for Indian cooking conditions—resisting heat, moisture, turmeric, and intensive daily usage. Available in L-Shaped, U-Shaped, Parallel, Island, and Straight layouts with European soft-closing mechanisms.",
     features: [
       {
         title: "Golden Kitchen Work Triangle",
@@ -276,7 +276,7 @@ export const servicesData: ServiceItem[] = [
       "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1000&q=80",
     ],
     overview:
-      "True to the Office Elevate heritage, we engineer workplaces that boost team morale, support focused deep work, and express brand leadership. We deliver end-to-end commercial solutions—from layout planning adhering to egress codes to modular desking systems with integrated power troughs and acoustic meeting spaces.",
+      "True to the Terraform Modular heritage, we engineer workplaces that boost team morale, support focused deep work, and express brand leadership. We deliver end-to-end commercial solutions—from layout planning adhering to egress codes to modular desking systems with integrated power troughs and acoustic meeting spaces.",
     features: [
       {
         title: "Modular Desking & Workstation Clusters",
@@ -410,7 +410,7 @@ export const servicesData: ServiceItem[] = [
     faqs: [
       {
         question: "Why choose Turnkey over managing individual contractors?",
-        answer: "Turnkey prevents cost escalations, contractor blame games, and design compromises. Because Office Elevate controls design, manufacturing, and installation directly, delays are drastically reduced.",
+        answer: "Turnkey prevents cost escalations, contractor blame games, and design compromises. Because Terraform Modular controls design, manufacturing, and installation directly, delays are drastically reduced.",
       },
     ],
   },

@@ -4,9 +4,9 @@ import Breadcrumbs from "@/components/common/Breadcrumbs";
 import { companyConfig } from "@/data/companyData";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Office Elevate",
+  title: "Privacy Policy | Terraform Modular",
   description:
-    "Privacy Policy for Office Elevate. Understand how we collect, use, and protect your consultation and enquiry details.",
+    "Privacy Policy for Terraform Modular. Understand how we collect, use, and protect your consultation and enquiry details.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
             Privacy Policy
           </h1>
           <p className="text-xs text-slate-500 mt-2">
-            Last updated: October 2026 • Office Elevate Modular Solutions
+            Last updated: October 2026 • Terraform Modular Modular Solutions
           </p>
         </div>
       </section>
@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
           <div className="space-y-3">
             <h2 className="text-xl font-bold text-[#1F3B6B]">1. Overview</h2>
             <p>
-              At <strong>Office Elevate</strong>, we value the trust you place in us when sharing your personal information and property details. This Privacy Policy outlines our transparent practices regarding data collection, usage, and protection when you interact with our website, request design consultations, or contact us via telephone and WhatsApp.
+              At <strong>Terraform Modular</strong>, we value the trust you place in us when sharing your personal information and property details. This Privacy Policy outlines our transparent practices regarding data collection, usage, and protection when you interact with our website, request design consultations, or contact us via telephone and WhatsApp.
             </p>
           </div>
 

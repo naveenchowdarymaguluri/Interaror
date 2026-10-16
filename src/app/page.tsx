@@ -37,7 +37,7 @@ import MaterialFinishesVisualizer from "@/components/interactive/MaterialFinishe
 
 const FAQ_ITEMS = [
   {
-    q: "What interior design and modular furniture services does Office Elevate provide?",
+    q: "What interior design and modular furniture services does Terraform Modular provide?",
     a: "We provide end-to-end residential interiors (complete apartments, villas, modular kitchens, luxury wardrobes, living & bedroom styling), commercial corporate workplaces (workstations, executive suites, conference rooms), turnkey execution, and custom OEM furniture manufacturing.",
   },
   {
@@ -107,13 +107,13 @@ export default function HomePage() {
 
               <h1 className="animate-fade-in-up delay-150 text-4xl sm:text-5xl lg:text-6xl font-black text-[#1F3B6B] tracking-tight leading-[1.12]">
                 Thoughtfully Designed Spaces.{" "}
-                <span className="block mt-2 bg-gradient-to-r from-[#1F3B6B] via-[#D4A705] to-[#1F3B6B] bg-clip-text text-transparent">
+                <span className="hero-title-shimmer block mt-2 bg-gradient-to-r from-[#1F3B6B] via-[#D4A705] to-[#1F3B6B] bg-clip-text text-transparent">
                   Beautifully Crafted Interiors.
                 </span>
               </h1>
 
               <p className="animate-fade-in-up delay-300 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
-                From modular kitchens and custom wardrobes to complete home and office interiors, Office Elevate brings together thoughtful design, quality craftsmanship and functional solutions tailored to your space.
+                From modular kitchens and custom wardrobes to complete home and office interiors, Terraform Modular brings together thoughtful design, quality craftsmanship and functional solutions tailored to your space.
               </p>
 
               {/* CTAs */}
@@ -162,16 +162,66 @@ export default function HomePage() {
             </div>
 
             {/* Right Architectural Image Composition with Ken Burns & Floating Badges */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative mx-auto rounded-3xl overflow-hidden shadow-2xl border border-slate-200/90 aspect-[4/5] max-w-md lg:max-w-none group">
+            <div className="lg:col-span-5 relative hero-visual-wrap">
+              <div
+                className="hero-visual-card relative mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/80 aspect-[4/5] max-w-md lg:max-w-none group"
+                onPointerMove={(event) => {
+                  if (event.pointerType === "touch") return;
+                  const bounds = event.currentTarget.getBoundingClientRect();
+                  const x = (event.clientX - bounds.left) / bounds.width;
+                  const y = (event.clientY - bounds.top) / bounds.height;
+                  event.currentTarget.style.setProperty(
+                    "--hero-rotate-x",
+                    `${(0.5 - y) * 5}deg`
+                  );
+                  event.currentTarget.style.setProperty(
+                    "--hero-rotate-y",
+                    `${(x - 0.5) * 5}deg`
+                  );
+                  event.currentTarget.style.setProperty(
+                    "--hero-spot-x",
+                    `${x * 100}%`
+                  );
+                  event.currentTarget.style.setProperty(
+                    "--hero-spot-y",
+                    `${y * 100}%`
+                  );
+                }}
+                onPointerLeave={(event) => {
+                  event.currentTarget.style.setProperty("--hero-rotate-x", "0deg");
+                  event.currentTarget.style.setProperty("--hero-rotate-y", "0deg");
+                  event.currentTarget.style.setProperty("--hero-spot-x", "50%");
+                  event.currentTarget.style.setProperty("--hero-spot-y", "50%");
+                }}
+              >
                 <Image
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-                  alt="Office Elevate Contemporary Modular Interior"
+                  src={projectsData[0].thumbnail}
+                  alt="Terraform Modular contemporary modular kitchen interior"
                   fill
-                  className="object-cover animate-ken-burns"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="hero-visual-image object-cover animate-ken-burns"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1F3B6B]/85 via-transparent to-transparent pointer-events-none" />
+                <div className="hero-blueprint-overlay absolute inset-0 pointer-events-none" aria-hidden="true">
+                  <svg viewBox="0 0 500 620" preserveAspectRatio="none" className="h-full w-full">
+                    <path d="M30 95h90V35M470 525h-90v60M44 150v310M456 155v300M75 125h110M315 495h110" />
+                    <path d="M95 190h110v95H95zM295 190h110v95H295zM95 330h310v120H95z" />
+                    <path d="M150 190v95M350 190v95M250 330v120M95 390h310" />
+                    <circle cx="250" cy="390" r="8" />
+                  </svg>
+                </div>
+
+                <div className="absolute left-5 top-5 z-20 flex items-center gap-2 rounded-full border border-white/25 bg-[#122442]/55 px-3 py-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-white/90 backdrop-blur-md">
+                  <span className="hero-live-dot h-1.5 w-1.5 rounded-full bg-[#EEC10E]" />
+                  Spatial study <span className="text-white/45">/ 001</span>
+                </div>
+
+                <div className="hero-crosshair absolute right-8 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 text-white/80 sm:flex" aria-hidden="true">
+                  <span className="absolute h-px w-5 bg-white/80" />
+                  <span className="absolute h-5 w-px bg-white/80" />
+                  <span className="h-1 w-1 rounded-full bg-[#EEC10E]" />
+                </div>
 
                 {/* Overlaid Floating Upper Badge */}
                 <div className="absolute top-5 right-5 p-3 rounded-2xl bg-white/90 backdrop-blur-md shadow-xl border border-white/50 animate-float z-20 flex items-center gap-2.5">
@@ -207,6 +257,9 @@ export default function HomePage() {
               </div>
 
               {/* Decorative Subtle Geometry */}
+              <div className="hero-orbit absolute -bottom-9 -left-10 -z-10 hidden h-36 w-36 rounded-full border border-[#EEC10E]/35 sm:block" aria-hidden="true">
+                <span className="hero-orbit-dot absolute -right-1 top-1/2 h-2.5 w-2.5 rounded-full bg-[#EEC10E] shadow-[0_0_18px_rgba(238,193,14,0.9)]" />
+              </div>
               <div className="absolute -top-4 -right-4 w-32 h-32 bg-[#EEC10E]/20 rounded-full blur-2xl -z-10" />
               <div className="absolute -bottom-4 -left-4 w-40 h-40 bg-[#1F3B6B]/15 rounded-full blur-2xl -z-10" />
             </div>
@@ -518,7 +571,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
-              The Office Elevate Difference
+              The Terraform Modular Difference
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
               Engineered Precision. Architectural Design.
@@ -600,7 +653,7 @@ export default function HomePage() {
                 Crafted in the Factory. Perfected at Your Space.
               </h2>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                By investing in computerized beam saws, throughfeed PUR edge banders, and multi-spindle boring machinery, Office Elevate delivers consistent quality that traditional on-site carpenters cannot replicate.
+                By investing in computerized beam saws, throughfeed PUR edge banders, and multi-spindle boring machinery, Terraform Modular delivers consistent quality that traditional on-site carpenters cannot replicate.
               </p>
             </div>
             <div className="lg:col-span-5 text-left lg:text-right">
@@ -614,35 +667,31 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Manufacturing Step Highlights with Progressive Connector Line */}
-          <div className="relative">
-            {/* Desktop connecting progress line with glowing aura */}
-            <div className="hidden md:block absolute top-12 left-20 right-20 h-[3px] bg-gradient-to-r from-[#EEC10E]/20 via-[#EEC10E] to-[#EEC10E]/20 z-0 pointer-events-none shadow-[0_0_12px_rgba(238,193,14,0.6)]" />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-              {manufacturingSteps.slice(0, 3).map((step, idx) => (
-                <ScrollReveal key={step.stepNumber} delayMs={idx * 100}>
-                  <div className="group relative overflow-hidden bg-white/5 border border-white/10 hover:border-[#EEC10E]/80 rounded-2xl p-6 text-left hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(238,193,14,0.25)] flex flex-col justify-between h-full hardware-accelerated">
-                    {/* Light sweep on card hover */}
-                    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+          {/* Manufacturing Step Highlights */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {manufacturingSteps.slice(0, 3).map((step, idx) => (
+              <ScrollReveal key={step.stepNumber} delayMs={idx * 100}>
+                <div className="group relative overflow-hidden bg-white/5 border border-white/10 hover:border-[#EEC10E]/80 rounded-2xl p-6 text-left hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(238,193,14,0.25)] flex flex-col justify-between h-full hardware-accelerated">
+                  {/* Light sweep on card hover */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
 
-                    <div>
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-2xl font-black text-[#EEC10E] group-hover:scale-105 transition-transform duration-200">{step.stepNumber}</span>
-                        <span className="text-[10px] uppercase font-bold tracking-wider text-slate-300 bg-white/10 group-hover:bg-[#EEC10E] group-hover:text-[#1F3B6B] transition-colors duration-200 px-2.5 py-1 rounded-md font-mono">
-                          Precision Phase
-                        </span>
-                      </div>
-                      <h3 className="font-bold text-lg text-white mb-1 group-hover:text-[#EEC10E] transition-colors duration-200">{step.title}</h3>
-                      <p className="text-xs text-slate-300 leading-relaxed mt-2">{step.description}</p>
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-2xl font-black text-[#EEC10E] group-hover:scale-105 transition-transform duration-200">{step.stepNumber}</span>
+                      <span className="text-[10px] uppercase font-bold tracking-wider text-slate-300 bg-white/10 group-hover:bg-[#EEC10E] group-hover:text-[#1F3B6B] transition-colors duration-200 px-2.5 py-1 rounded-md font-mono">
+                        Precision Phase
+                      </span>
                     </div>
-                    <div className="mt-6 pt-4 border-t border-white/10 text-[11px] text-amber-300/90 font-medium flex items-center gap-2">
-                      <Sparkles className="w-3.5 h-3.5 text-[#EEC10E] flex-shrink-0" />
-                      <span>{step.technicalHighlight}</span>
-                    </div>
+                    <h3 className="font-bold text-lg text-white mb-1 group-hover:text-[#EEC10E] transition-colors duration-200">{step.title}</h3>
+                    <p className="text-xs text-slate-300 leading-relaxed mt-2">{step.description}</p>
                   </div>
-                </ScrollReveal>
-              ))}
-            </div>
+                  <div className="mt-6 pt-4 border-t border-white/10 text-[11px] text-amber-300/90 font-medium flex items-center gap-2">
+                    <Sparkles className="w-3.5 h-3.5 text-[#EEC10E] flex-shrink-0" />
+                    <span>{step.technicalHighlight}</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
 
           <div className="mt-12 text-center">
@@ -737,14 +786,14 @@ export default function HomePage() {
             {[
               {
                 quote:
-                  "Office Elevate designed and installed our 3BHK modular kitchen and wardrobes. The PUR edge banding quality and Blum hardware operation are flawless.",
+                  "Terraform Modular designed and installed our 3BHK modular kitchen and wardrobes. The PUR edge banding quality and Blum hardware operation are flawless.",
                 name: "Anand & Priya R.",
                 property: "Prestige Lakeview, Bangalore",
                 type: "Complete Home Interiors",
               },
               {
                 quote:
-                  "For our 60-seat tech office, we needed durable workstations and a statement boardroom table. Office Elevate delivered right on schedule with zero site mess.",
+                  "For our 60-seat tech office, we needed durable workstations and a statement boardroom table. Terraform Modular delivered right on schedule with zero site mess.",
                 name: "Vikram Mehta",
                 property: "Horizon Tech Office Fit-out",
                 type: "Corporate Office Interiors",
@@ -812,7 +861,7 @@ export default function HomePage() {
             </button>
 
             <a
-              href={getWhatsAppUrl("Hello Office Elevate, I would like to book an interior design consultation.")}
+              href={getWhatsAppUrl("Hello Terraform Modular, I would like to book an interior design consultation.")}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-sm px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
@@ -899,7 +948,7 @@ export default function HomePage() {
                 Book a Free Design Consultation
               </h3>
               <p className="text-xs text-slate-600 mt-1">
-                Fill in your details and an Office Elevate interior consultant will contact you within 24 business hours.
+                Fill in your details and an Terraform Modular interior consultant will contact you within 24 business hours.
               </p>
             </div>
 

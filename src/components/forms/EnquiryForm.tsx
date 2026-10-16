@@ -96,7 +96,7 @@ export default function EnquiryForm({
 
   if (status === "success") {
     const waUrl = getWhatsAppUrl(
-      `Hello Office Elevate, I just submitted an enquiry (#${leadId}) for ${formData.projectType} in ${formData.location}. Would love to discuss next steps!`
+      `Hello Terraform Modular, I just submitted an enquiry (#${leadId}) for ${formData.projectType} in ${formData.location}. Would love to discuss next steps!`
     );
 
     return (
@@ -341,7 +341,7 @@ export default function EnquiryForm({
       </div>
 
       <p className="text-[11px] text-slate-500 leading-normal">
-        By submitting, you consent to Office Elevate contacting you regarding your interior design and modular furniture consultation. We never sell your personal contact information.
+        By submitting, you consent to Terraform Modular contacting you regarding your interior design and modular furniture consultation. We never sell your personal contact information.
       </p>
 
       {/* Submit Button */}

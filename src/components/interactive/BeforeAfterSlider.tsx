@@ -17,9 +17,9 @@ export default function BeforeAfterSlider({
   beforeImage = "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1400&q=80",
   afterImage = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
   beforeLabel = "Civil Bare Shell",
-  afterLabel = "Office Elevate Turnkey Finish",
+  afterLabel = "Terraform Modular Turnkey Finish",
   title = "The Transformation Experience",
-  subtitle = "Drag the slider to reveal how Office Elevate transforms bare construction shells into refined architectural living spaces.",
+  subtitle = "Drag the slider to reveal how Terraform Modular transforms bare construction shells into refined architectural living spaces.",
 }: Props) {
   const [sliderPosition, setSliderPosition] = useState<number>(50);
   const [isDragging, setIsDragging] = useState<boolean>(false);

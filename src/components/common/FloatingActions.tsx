@@ -37,7 +37,7 @@ export default function FloatingActions() {
           target="_blank"
           rel="noopener noreferrer"
           className="relative w-13 h-13 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-full flex items-center justify-center shadow-xl transition-all hover:scale-105"
-          aria-label="Chat with Office Elevate on WhatsApp"
+          aria-label="Chat with Terraform Modular on WhatsApp"
         >
           <MessageCircle className="w-7 h-7" />
           <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#EEC10E] border-2 border-white rounded-full animate-ping" />
