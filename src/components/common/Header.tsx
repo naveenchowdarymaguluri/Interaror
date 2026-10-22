@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Phone,
@@ -16,20 +17,35 @@ import {
   Briefcase,
   Factory,
   Calculator,
+  Search,
+  ShoppingBag,
+  Sparkles,
+  BookOpen,
 } from "lucide-react";
 import Logo from "./Logo";
 import { companyConfig, getPhoneUrl, getWhatsAppUrl } from "@/data/companyData";
 import { servicesData } from "@/data/servicesData";
-import { productCategories } from "@/data/productsData";
+import { productCategories, productsData } from "@/data/productsData";
 import EnquiryForm from "@/components/forms/EnquiryForm";
+import { useStore } from "@/context/StoreContext";
 
 export default function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [productsMegaMenu, setProductsMegaMenu] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
-  const [productsDropdown, setProductsDropdown] = useState(false);
-  const [consultationModalOpen, setConsultationModalOpen] = useState(false);
+
+  const {
+    cartCount,
+    setIsCartOpen,
+    openSearch,
+    openLookbook,
+    isConsultationOpen,
+    openConsultation,
+    closeConsultation,
+    consultationInitialNotes,
+  } = useStore();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,11 +55,11 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile drawer on route change
+  // Close drawers on route change
   useEffect(() => {
     setMobileMenuOpen(false);
+    setProductsMegaMenu(false);
     setServicesDropdown(false);
-    setProductsDropdown(false);
   }, [pathname]);
 
   const isActive = (path: string) => {
@@ -64,15 +80,23 @@ export default function Header() {
             </span>
             <span className="hidden md:inline text-slate-500">•</span>
             <span className="hidden md:inline text-slate-300">
-              German CNC & PUR Edge Sealing Precision
+              German CNC & Zero-Joint PUR Edge Sealing Precision
             </span>
           </div>
 
           <div className="flex items-center gap-5 text-[11px] sm:text-xs">
+            <button
+              onClick={openLookbook}
+              className="hidden lg:inline-flex items-center gap-1.5 text-[#EEC10E] hover:text-amber-300 font-semibold transition-colors"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Download 2026 Lookbook (PDF)</span>
+            </button>
+            <span className="hidden lg:inline text-slate-600">|</span>
             <a
               href={getPhoneUrl()}
               className="flex items-center gap-1.5 text-slate-200 hover:text-[#EEC10E] transition-colors"
-              aria-label="Call Terraform Modular"
+              aria-label="Call studio"
             >
               <Phone className="w-3.5 h-3.5 text-[#EEC10E]" />
               <span className="font-semibold">{companyConfig.displayPhone}</span>
@@ -83,7 +107,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors"
-              aria-label="WhatsApp Terraform Modular"
+              aria-label="WhatsApp enquiry"
             >
               <MessageCircle className="w-3.5 h-3.5" />
               <span className="font-semibold">WhatsApp Enquiry</span>
@@ -92,43 +116,119 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main Sticky Header */}
+      {/* Main Sticky Header - Glassmorphic Navbar */}
       <header
         className={`sticky top-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/90 backdrop-blur-md shadow-md py-3 border-b border-slate-200/60"
-            : "bg-white/70 backdrop-blur-xs py-4 border-b border-slate-100/80"
+            ? "bg-white/90 backdrop-blur-md shadow-sm py-3 border-b border-stone-200/80"
+            : "bg-white/80 backdrop-blur-md py-4 border-b border-stone-200/60"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           {/* Brand Logo */}
-          <Logo />
+          <div className="shrink-0">
+            <Logo />
+          </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden xl:flex items-center space-x-1">
             <Link
               href="/"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+              className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${
                 isActive("/") && pathname === "/"
-                  ? "text-[#1F3B6B] bg-slate-100/80 font-bold"
-                  : "text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50"
+                  ? "text-[#1F3B6B] bg-stone-100"
+                  : "text-stone-700 hover:text-[#1F3B6B] hover:bg-stone-50"
               }`}
             >
               Home
             </Link>
 
-            <Link
-              href="/about"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
-                isActive("/about")
-                  ? "text-[#1F3B6B] bg-slate-100/80 font-bold"
-                  : "text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50"
-              }`}
+            {/* Modular Products Mega Menu Trigger */}
+            <div
+              className="relative"
+              onMouseEnter={() => setProductsMegaMenu(true)}
+              onMouseLeave={() => setProductsMegaMenu(false)}
             >
-              About Us
-            </Link>
+              <Link
+                href="/products"
+                className={`flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                  isActive("/products")
+                    ? "text-[#1F3B6B] bg-stone-100"
+                    : "text-stone-700 hover:text-[#1F3B6B] hover:bg-stone-50"
+                }`}
+              >
+                <span>Modular Products</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${productsMegaMenu ? "rotate-180" : ""}`} />
+              </Link>
 
-            {/* Services Dropdown */}
+              {/* Mega-Menu Dropdown Panel */}
+              {productsMegaMenu && (
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[780px] bg-white rounded-3xl shadow-2xl border border-stone-200 p-6 z-50 animate-fade-in-up">
+                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-stone-100">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#EEC10E] block">
+                        Factory-Engineered Millwork
+                      </span>
+                      <h4 className="text-sm font-extrabold text-stone-900">
+                        Modular Furniture Collections
+                      </h4>
+                    </div>
+                    <Link
+                      href="/products"
+                      className="text-xs font-bold text-[#1F3B6B] hover:underline flex items-center gap-1"
+                    >
+                      <span>View All ({productsData.length} items)</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+
+                  {/* Category Grid */}
+                  <div className="grid grid-cols-3 gap-3">
+                    {productCategories.slice(0, 6).map((cat) => (
+                      <Link
+                        key={cat.slug}
+                        href={`/products#${cat.slug}`}
+                        className="group p-2.5 rounded-2xl hover:bg-stone-50 border border-transparent hover:border-stone-200 transition-all flex items-center gap-3"
+                      >
+                        <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-stone-200 shrink-0">
+                          <Image
+                            src={cat.heroImage}
+                            alt={cat.name}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform"
+                          />
+                        </div>
+                        <div className="min-w-0">
+                          <h5 className="text-xs font-bold text-stone-900 group-hover:text-[#1F3B6B] transition-colors truncate">
+                            {cat.name}
+                          </h5>
+                          <span className="text-[10px] text-stone-600 block">
+                            {cat.itemCount} Designs Available
+                          </span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+
+                  {/* Mega Menu Footer Callout */}
+                  <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs bg-stone-50/80 -mx-6 -mb-6 px-6 py-3 rounded-b-3xl">
+                    <span className="flex items-center gap-1.5 text-stone-600">
+                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                      100% BWP Marine Carcass with 10-Year Warranty
+                    </span>
+                    <button
+                      onClick={openLookbook}
+                      className="text-[#1F3B6B] font-bold hover:underline flex items-center gap-1"
+                    >
+                      <span>Download Spec Catalog</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Interior Services Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setServicesDropdown(true)}
@@ -136,326 +236,244 @@ export default function Header() {
             >
               <Link
                 href="/services"
-                className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                className={`flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
                   isActive("/services")
-                    ? "text-[#1F3B6B] bg-slate-100/80 font-bold"
-                    : "text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50"
+                    ? "text-[#1F3B6B] bg-stone-100"
+                    : "text-stone-700 hover:text-[#1F3B6B] hover:bg-stone-50"
                 }`}
               >
                 <span>Services</span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    servicesDropdown ? "rotate-180 text-[#EEC10E]" : ""
-                  }`}
-                />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesDropdown ? "rotate-180" : ""}`} />
               </Link>
 
-              <div
-                className={`absolute top-full left-0 w-80 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100 py-3 px-2 z-50 transform origin-top transition-all duration-150 ease-out ${
-                  servicesDropdown
-                    ? "opacity-100 scale-y-100 pointer-events-auto visible"
-                    : "opacity-0 scale-y-95 pointer-events-none invisible"
-                }`}
-              >
-                <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3 py-1">
-                  Design & Turnkey Services
-                </div>
-                {servicesData.map((service) => (
-                  <Link
-                    key={service.slug}
-                    href={`/services/${service.slug}`}
-                    className="block px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50/80 transition-colors"
-                  >
-                    <div className="font-bold text-slate-900">{service.title}</div>
-                    <div className="text-[11px] text-slate-500 font-normal line-clamp-1">
-                      {service.tagline}
+              {servicesDropdown && (
+                <div className="absolute top-full left-0 w-64 bg-white rounded-2xl shadow-xl border border-stone-200 p-3 z-50 animate-fade-in-up">
+                  <div className="space-y-1">
+                    {servicesData.slice(0, 5).map((srv) => (
+                      <Link
+                        key={srv.slug}
+                        href={`/services/${srv.slug}`}
+                        className="block px-3 py-2 rounded-xl text-xs font-medium text-stone-700 hover:bg-stone-50 hover:text-[#1F3B6B] transition-colors"
+                      >
+                        {srv.title}
+                      </Link>
+                    ))}
+                    <div className="pt-2 border-t border-stone-100">
+                      <Link
+                        href="/services"
+                        className="block px-3 py-1.5 text-xs font-bold text-[#1F3B6B] hover:underline"
+                      >
+                        All Services Overview →
+                      </Link>
                     </div>
-                  </Link>
-                ))}
-                <div className="pt-2 border-t border-slate-100 mt-1 px-2">
-                  <Link
-                    href="/services"
-                    className="text-xs font-bold text-[#1F3B6B] hover:text-[#EEC10E] flex items-center justify-between p-1.5"
-                  >
-                    <span>Explore All 8 Services</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
-
-            {/* Products Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setProductsDropdown(true)}
-              onMouseLeave={() => setProductsDropdown(false)}
-            >
-              <Link
-                href="/products"
-                className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
-                  isActive("/products")
-                    ? "text-[#1F3B6B] bg-slate-100/80 font-bold"
-                    : "text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50"
-                }`}
-              >
-                <span>Products</span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    productsDropdown ? "rotate-180 text-[#EEC10E]" : ""
-                  }`}
-                />
-              </Link>
-
-              <div
-                className={`absolute top-full left-0 w-80 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-100 py-3 px-2 z-50 transform origin-top transition-all duration-150 ease-out ${
-                  productsDropdown
-                    ? "opacity-100 scale-y-100 pointer-events-auto visible"
-                    : "opacity-0 scale-y-95 pointer-events-none invisible"
-                }`}
-              >
-                <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3 py-1">
-                  Modular Furniture Range
-                </div>
-                {productCategories.slice(0, 6).map((cat) => (
-                  <Link
-                    key={cat.slug}
-                    href={`/products#${cat.slug}`}
-                    className="block px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50/80 transition-colors"
-                  >
-                    <div className="font-bold text-slate-900">{cat.name}</div>
-                    <div className="text-[11px] text-slate-500 font-normal line-clamp-1">
-                      {cat.description}
-                    </div>
-                  </Link>
-                ))}
-                <div className="pt-2 border-t border-slate-100 mt-1 px-2">
-                  <Link
-                    href="/products"
-                    className="text-xs font-bold text-[#1F3B6B] hover:text-[#EEC10E] flex items-center justify-between p-1.5"
-                  >
-                    <span>View All Modular Products</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <Link
-              href="/projects"
-              className={`px-3 py-2 rounded-lg text-sm font-semibold transition-colors ${
-                isActive("/projects")
-                  ? "text-[#1F3B6B] bg-slate-100/80 font-bold"
-                  : "text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50"
-              }`}
-            >
-              Our Projects
-            </Link>
 
             <Link
               href="/manufacturing"
-              className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors ${
+              className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${
                 isActive("/manufacturing")
-                  ? "text-[#1F3B6B] bg-slate-100/90 font-bold"
-                  : "text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-50"
+                  ? "text-[#1F3B6B] bg-stone-100"
+                  : "text-stone-700 hover:text-[#1F3B6B] hover:bg-stone-50"
               }`}
             >
-              Manufacturing
+              Factory & OEM
+            </Link>
+
+            <Link
+              href="/projects"
+              className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                isActive("/projects")
+                  ? "text-[#1F3B6B] bg-stone-100"
+                  : "text-stone-700 hover:text-[#1F3B6B] hover:bg-stone-50"
+              }`}
+            >
+              Portfolio
+            </Link>
+
+            <Link
+              href="/estimator"
+              className={`flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                isActive("/estimator")
+                  ? "text-[#1F3B6B] bg-stone-100"
+                  : "text-stone-700 hover:text-[#1F3B6B] hover:bg-stone-50"
+              }`}
+            >
+              <Calculator className="w-3.5 h-3.5 text-[#EEC10E]" />
+              <span>Cost Estimator</span>
+            </Link>
+
+            <Link
+              href="/contact"
+              className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                isActive("/contact")
+                  ? "text-[#1F3B6B] bg-stone-100"
+                  : "text-stone-700 hover:text-[#1F3B6B] hover:bg-stone-50"
+              }`}
+            >
+              Contact
             </Link>
           </nav>
 
-          {/* Right Header Actions */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* Right Action Tools: Search, Basket, Consultation CTA */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Quick Search Trigger (Cmd+K) */}
             <button
-              type="button"
-              onClick={() => setConsultationModalOpen(true)}
-              className="relative overflow-hidden group bg-gradient-to-r from-[#EEC10E] via-[#F3C920] to-[#E5B708] hover:from-[#E5B708] hover:to-[#D4A705] text-[#1F3B6B] font-black text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-gold-sm hover:shadow-gold-md transition-all duration-300 transform hover:-translate-y-0.5"
+              onClick={openSearch}
+              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold transition-all border border-stone-200/80"
+              aria-label="Search catalog"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                <span>Get Free Consultation</span>
-                <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
-              </span>
-              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+              <Search className="w-3.5 h-3.5 text-stone-500" />
+              <span className="hidden sm:inline text-stone-500 font-normal">Search...</span>
+              <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[9px] font-mono text-stone-400 bg-white rounded border border-stone-200">
+                ⌘K
+              </kbd>
             </button>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 lg:hidden">
+            {/* Cart / Quote Basket Trigger */}
             <button
-              type="button"
-              onClick={() => setConsultationModalOpen(true)}
-              className="bg-[#EEC10E] text-[#1F3B6B] font-bold text-[11px] uppercase tracking-wider px-3 py-2 rounded-lg"
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 transition-all border border-stone-200/80"
+              aria-label="View project basket"
             >
-              Consult
+              <ShoppingBag className="w-4 h-4 text-[#1F3B6B]" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#EEC10E] text-stone-950 text-[10px] font-black flex items-center justify-center shadow-xs">
+                  {cartCount}
+                </span>
+              )}
             </button>
+
+            {/* Book Free Consult High-Contrast CTA */}
             <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl text-slate-700 hover:text-[#1F3B6B] hover:bg-slate-100"
-              aria-label="Toggle mobile menu"
+              onClick={() => openConsultation()}
+              className="hidden md:inline-flex items-center gap-1.5 bg-[#1F3B6B] hover:bg-[#15294b] text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow-sm transition-all"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <Sparkles className="w-3.5 h-3.5 text-[#EEC10E]" />
+              <span>Free Consultation</span>
+            </button>
+
+            {/* Mobile Hamburger Trigger */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="xl:hidden p-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 transition-colors"
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
-      </header>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div
-            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-          <div className="fixed inset-y-0 right-0 max-w-sm w-full bg-white shadow-2xl p-6 overflow-y-auto flex flex-col justify-between animate-slide-left">
-            <div>
-              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
-                <Logo />
-                <button
-                  type="button"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 rounded-lg text-slate-400 hover:text-slate-700"
-                >
-                  <X className="w-6 h-6" />
-                </button>
-              </div>
-
-              <div className="py-6 space-y-1">
-                <Link
-                  href="/"
-                  className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/about"
-                  className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50"
-                >
-                  About Us
-                </Link>
-                <Link
-                  href="/services"
-                  className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50"
-                >
-                  Services (8 Core Offerings)
-                </Link>
-                <Link
-                  href="/products"
-                  className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50"
-                >
-                  Products & Modular Solutions
-                </Link>
-                <Link
-                  href="/projects"
-                  className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50"
-                >
-                  Our Projects Portfolio
-                </Link>
-                <Link
-                  href="/manufacturing"
-                  className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50"
-                >
-                  Manufacturing & Craftsmanship
-                </Link>
-                <Link
-                  href="/estimator"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50 flex items-center justify-between"
-                >
-                  <span>Interior Budget Estimator</span>
-                  <span className="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded">Interactive</span>
-                </Link>
-                <Link
-                  href="/#deep-explore"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50 flex items-center justify-between"
-                >
-                  <span className="flex items-center gap-2">
-                    <Compass className="w-4 h-4 text-[#EEC10E]" />
-                    <span>3D Deep Interior Explorer</span>
-                  </span>
-                  <span className="text-[10px] bg-[#EEC10E]/20 text-[#1F3B6B] font-extrabold px-2 py-0.5 rounded">3D Tour</span>
-                </Link>
-                <Link
-                  href="/blog"
-                  className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50"
-                >
-                  Design Ideas & Editorial Guides
-                </Link>
-                <Link
-                  href="/contact"
-                  className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-900 hover:bg-slate-50"
-                >
-                  Contact Us
-                </Link>
-              </div>
+        {/* Mobile Navigation Drawer */}
+        {mobileMenuOpen && (
+          <div className="xl:hidden bg-white border-b border-stone-200 px-4 pt-3 pb-6 space-y-3 animate-fade-in-up">
+            <div className="flex flex-col space-y-1">
+              <Link
+                href="/"
+                className="px-3 py-2 rounded-xl text-sm font-semibold text-stone-800 hover:bg-stone-50"
+              >
+                Home
+              </Link>
+              <Link
+                href="/products"
+                className="px-3 py-2 rounded-xl text-sm font-semibold text-stone-800 hover:bg-stone-50 flex items-center justify-between"
+              >
+                <span>Modular Products ({productsData.length})</span>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">
+                  Catalog
+                </span>
+              </Link>
+              <Link
+                href="/services"
+                className="px-3 py-2 rounded-xl text-sm font-semibold text-stone-800 hover:bg-stone-50"
+              >
+                Interior Services
+              </Link>
+              <Link
+                href="/estimator"
+                className="px-3 py-2 rounded-xl text-sm font-bold text-[#1F3B6B] bg-blue-50/60 hover:bg-blue-50 flex items-center gap-2"
+              >
+                <Calculator className="w-4 h-4 text-[#EEC10E]" />
+                <span>Instant Cost Estimator</span>
+              </Link>
+              <Link
+                href="/manufacturing"
+                className="px-3 py-2 rounded-xl text-sm font-semibold text-stone-800 hover:bg-stone-50"
+              >
+                Factory & OEM
+              </Link>
+              <Link
+                href="/projects"
+                className="px-3 py-2 rounded-xl text-sm font-semibold text-stone-800 hover:bg-stone-50"
+              >
+                Portfolio
+              </Link>
+              <Link
+                href="/contact"
+                className="px-3 py-2 rounded-xl text-sm font-semibold text-stone-800 hover:bg-stone-50"
+              >
+                Contact
+              </Link>
             </div>
 
-            <div className="pt-6 border-t border-slate-100 space-y-3">
+            <div className="pt-3 border-t border-stone-100 space-y-2">
               <button
-                type="button"
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  setConsultationModalOpen(true);
+                  openConsultation();
                 }}
-                className="w-full bg-[#EEC10E] text-[#1F3B6B] font-extrabold text-sm py-3.5 rounded-xl shadow text-center"
+                className="w-full py-3 bg-[#1F3B6B] text-white text-xs font-bold rounded-xl text-center shadow-sm"
               >
-                Get Free Consultation
+                Book Free Site Survey & 3D Consult
               </button>
-
-              <div className="grid grid-cols-2 gap-2 text-center text-xs">
-                <a
-                  href={getPhoneUrl()}
-                  className="flex items-center justify-center gap-1.5 p-3 rounded-xl bg-slate-100 text-slate-800 font-semibold"
-                >
-                  <Phone className="w-3.5 h-3.5 text-[#EEC10E]" />
-                  Call Now
-                </a>
-                <a
-                  href={getWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 p-3 rounded-xl bg-emerald-50 text-emerald-700 font-semibold"
-                >
-                  <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
-                  WhatsApp
-                </a>
-              </div>
+              <a
+                href={getWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 bg-[#25D366] text-white text-xs font-bold rounded-xl flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Chat on WhatsApp</span>
+              </a>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </header>
 
-      {/* Global Quick Consultation Modal */}
-      {consultationModalOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 max-h-[92vh] overflow-y-auto relative shadow-2xl">
-            <button
-              type="button"
-              onClick={() => setConsultationModalOpen(false)}
-              className="absolute top-6 right-6 text-slate-400 hover:text-slate-800 text-lg font-bold w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center"
-            >
-              ✕
-            </button>
-            <div className="mb-6 text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
-                Direct Lead Consultation
-              </span>
-              <h3 className="text-2xl font-black text-[#1F3B6B] mt-1">
-                Book a Free Design Consultation
-              </h3>
-              <p className="text-xs text-slate-600 mt-1">
-                Share your space details and our design consultant will reach out with layout concepts and itemized quotation.
-              </p>
-            </div>
-
-            <EnquiryForm
-              initialProjectType="Complete Home Interiors"
-              sourceContext="Global Header CTA Modal"
-              onSuccess={() => {
-                setTimeout(() => setConsultationModalOpen(false), 3000);
-              }}
-              compact={true}
+      {/* Free Consultation Modal */}
+      {isConsultationOpen && (
+        <div className="fixed inset-0 z-50 overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div
+              onClick={closeConsultation}
+              className="fixed inset-0 bg-stone-950/70 backdrop-blur-sm transition-opacity"
             />
+            <div className="relative transform overflow-hidden rounded-3xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-xl border border-stone-200">
+              <div className="px-6 py-4 bg-[#122442] text-white flex items-center justify-between border-b border-white/10">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[#EEC10E]" />
+                  <h3 className="text-sm font-bold text-white">Book Free 3D Design Consultation</h3>
+                </div>
+                <button
+                  onClick={closeConsultation}
+                  className="p-1 rounded-lg text-slate-400 hover:text-white"
+                  aria-label="Close modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="p-6">
+                <EnquiryForm
+                  sourceContext={consultationInitialNotes || "Enquiry from Navbar Consultation trigger"}
+                  initialRequirements={consultationInitialNotes || ""}
+                  onSuccess={() => {
+                    setTimeout(() => closeConsultation(), 2500);
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       )}

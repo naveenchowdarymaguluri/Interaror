@@ -14,7 +14,6 @@ import {
   Layers,
   Ruler,
   ChevronDown,
-  ChevronUp,
   Sliders,
   Award,
   Factory,
@@ -34,6 +33,11 @@ import ScrollReveal from "@/components/common/ScrollReveal";
 import DeepInteriorExplorer from "@/components/interactive/DeepInteriorExplorer";
 import BeforeAfterSlider from "@/components/interactive/BeforeAfterSlider";
 import MaterialFinishesVisualizer from "@/components/interactive/MaterialFinishesVisualizer";
+import HeroShowroom from "@/components/interactive/HeroShowroom";
+import SpotlightShowcase from "@/components/interactive/SpotlightShowcase";
+import ThreeDIconBadge from "@/components/interactive/ThreeDIconBadge";
+import CtaShowcase from "@/components/interactive/CtaShowcase";
+import { useStore } from "@/context/StoreContext";
 
 const FAQ_ITEMS = [
   {
@@ -81,7 +85,7 @@ const FAQ_ITEMS = [
 export default function HomePage() {
   const [activeProjectFilter, setActiveProjectFilter] = useState<string>("All Projects");
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-  const [showConsultModal, setShowConsultModal] = useState<boolean>(false);
+  const { openConsultation } = useStore();
 
   const filteredProjects =
     activeProjectFilter === "All Projects"
@@ -90,210 +94,93 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col w-full bg-[#FEFEFE]">
-      {/* SECTION 1: HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50/90 via-white to-white pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-slate-100 bg-architectural-grid">
-        {/* Atmospheric Floating Light Orbs */}
-        <div className="absolute top-10 left-1/4 w-96 h-96 bg-[#EEC10E]/15 rounded-full blur-3xl animate-glow-pulse pointer-events-none -z-0" />
-        <div className="absolute top-20 right-10 w-96 h-96 bg-[#1F3B6B]/10 rounded-full blur-3xl pointer-events-none -z-0" />
+      {/* SECTION 1: INTERACTIVE HERO SHOWROOM (Inspired by supahero.io & styles.refero.design) */}
+      <HeroShowroom />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Left Content Column with Staggered Entrance */}
-            <div className="lg:col-span-7 space-y-6 text-left">
-              <div className="animate-fade-in-up inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#EEC10E]/50 shadow-sm text-xs font-bold text-[#1F3B6B]">
-                <span className="w-2 h-2 rounded-full bg-[#EEC10E] animate-ping" />
-                <span className="font-mono uppercase tracking-wider text-[11px]">Bespoke Architectural Interiors & Modular Factory</span>
-              </div>
+      {/* SECTION 2: 3D ISOMETRIC VALUE PROPOSITIONS (Inspired by 3dicons.co) */}
+      <section className="py-20 bg-stone-100/60 border-b border-stone-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#EEC10E] block">
+              Architectural Standards
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 mt-1 tracking-tight">
+              Why Discerning Homeowners Choose Terraform
+            </h2>
+            <p className="text-sm sm:text-base text-stone-600 mt-2">
+              Factory-milled modular furniture combining aerospace-grade machinery tolerances with European hardware excellence.
+            </p>
+          </div>
 
-              <h1 className="animate-fade-in-up delay-150 text-4xl sm:text-5xl lg:text-6xl font-black text-[#1F3B6B] tracking-tight leading-[1.12]">
-                Thoughtfully Designed Spaces.{" "}
-                <span className="hero-title-shimmer block mt-2 bg-gradient-to-r from-[#1F3B6B] via-[#D4A705] to-[#1F3B6B] bg-clip-text text-transparent">
-                  Beautifully Crafted Interiors.
-                </span>
-              </h1>
-
-              <p className="animate-fade-in-up delay-300 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl font-normal">
-                From modular kitchens and custom wardrobes to complete home and office interiors, Terraform Modular brings together thoughtful design, quality craftsmanship and functional solutions tailored to your space.
-              </p>
-
-              {/* CTAs */}
-              <div className="animate-fade-in-up delay-400 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setShowConsultModal(true)}
-                  className="relative overflow-hidden group inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#EEC10E] via-[#F3C920] to-[#E5B708] hover:from-[#E5B708] hover:to-[#D4A705] text-[#1F3B6B] font-black text-sm px-8 py-4 rounded-xl shadow-gold-md hover:shadow-gold-lg transition-all duration-300 transform hover:-translate-y-1"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    <span>Book a Free Consultation</span>
-                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" />
-                  </span>
-                  <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-                </button>
-
-                <Link
-                  href="/projects"
-                  className="inline-flex items-center justify-center gap-2 bg-white/90 backdrop-blur-sm hover:bg-slate-50 text-[#1F3B6B] font-bold text-sm px-7 py-4 rounded-xl border border-slate-200/90 shadow-sm hover:shadow-md transition-all duration-300 hover:border-[#EEC10E]/60 hover:-translate-y-1"
-                >
-                  <span>Explore Our Projects</span>
-                </Link>
-              </div>
-
-              {/* Quick Trust Highlights with Stagger in Frosted Glass Container */}
-              <div className="animate-fade-in-up delay-500 grid grid-cols-3 gap-4 p-4 rounded-2xl bg-white/70 backdrop-blur-md border border-slate-200/80 max-w-lg shadow-sm">
-                <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#1F3B6B]">
-                    <AnimatedCounter value="0.5mm" />
-                  </div>
-                  <div className="text-[11px] text-slate-500 font-semibold mt-0.5">CNC Precision</div>
-                </div>
-                <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#1F3B6B]">
-                    <AnimatedCounter value="100%" />
-                  </div>
-                  <div className="text-[11px] text-slate-500 font-semibold mt-0.5">BWP Marine Carcass</div>
-                </div>
-                <div>
-                  <div className="text-xl sm:text-2xl font-black text-[#1F3B6B]">
-                    <AnimatedCounter value="10 Yrs*" />
-                  </div>
-                  <div className="text-[11px] text-slate-500 font-semibold mt-0.5">Hardware Standard</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Architectural Image Composition with Ken Burns & Floating Badges */}
-            <div className="lg:col-span-5 relative hero-visual-wrap">
-              <div
-                className="hero-visual-card relative mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/80 aspect-[4/5] max-w-md lg:max-w-none group"
-                onPointerMove={(event) => {
-                  if (event.pointerType === "touch") return;
-                  const bounds = event.currentTarget.getBoundingClientRect();
-                  const x = (event.clientX - bounds.left) / bounds.width;
-                  const y = (event.clientY - bounds.top) / bounds.height;
-                  event.currentTarget.style.setProperty(
-                    "--hero-rotate-x",
-                    `${(0.5 - y) * 5}deg`
-                  );
-                  event.currentTarget.style.setProperty(
-                    "--hero-rotate-y",
-                    `${(x - 0.5) * 5}deg`
-                  );
-                  event.currentTarget.style.setProperty(
-                    "--hero-spot-x",
-                    `${x * 100}%`
-                  );
-                  event.currentTarget.style.setProperty(
-                    "--hero-spot-y",
-                    `${y * 100}%`
-                  );
-                }}
-                onPointerLeave={(event) => {
-                  event.currentTarget.style.setProperty("--hero-rotate-x", "0deg");
-                  event.currentTarget.style.setProperty("--hero-rotate-y", "0deg");
-                  event.currentTarget.style.setProperty("--hero-spot-x", "50%");
-                  event.currentTarget.style.setProperty("--hero-spot-y", "50%");
-                }}
-              >
-                <Image
-                  src={projectsData[0].thumbnail}
-                  alt="Terraform Modular contemporary modular kitchen interior"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  className="hero-visual-image object-cover animate-ken-burns"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1F3B6B]/85 via-transparent to-transparent pointer-events-none" />
-                <div className="hero-blueprint-overlay absolute inset-0 pointer-events-none" aria-hidden="true">
-                  <svg viewBox="0 0 500 620" preserveAspectRatio="none" className="h-full w-full">
-                    <path d="M30 95h90V35M470 525h-90v60M44 150v310M456 155v300M75 125h110M315 495h110" />
-                    <path d="M95 190h110v95H95zM295 190h110v95H295zM95 330h310v120H95z" />
-                    <path d="M150 190v95M350 190v95M250 330v120M95 390h310" />
-                    <circle cx="250" cy="390" r="8" />
-                  </svg>
-                </div>
-
-                <div className="absolute left-5 top-5 z-20 flex items-center gap-2 rounded-full border border-white/25 bg-[#122442]/55 px-3 py-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-white/90 backdrop-blur-md">
-                  <span className="hero-live-dot h-1.5 w-1.5 rounded-full bg-[#EEC10E]" />
-                  Spatial study <span className="text-white/45">/ 001</span>
-                </div>
-
-                <div className="hero-crosshair absolute right-8 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/50 text-white/80 sm:flex" aria-hidden="true">
-                  <span className="absolute h-px w-5 bg-white/80" />
-                  <span className="absolute h-5 w-px bg-white/80" />
-                  <span className="h-1 w-1 rounded-full bg-[#EEC10E]" />
-                </div>
-
-                {/* Overlaid Floating Upper Badge */}
-                <div className="absolute top-5 right-5 p-3 rounded-2xl bg-white/90 backdrop-blur-md shadow-xl border border-white/50 animate-float z-20 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-[#EEC10E]/20 text-[#1F3B6B] flex items-center justify-center font-black text-xs">
-                    ★
-                  </div>
-                  <div className="text-left">
-                    <span className="text-[9px] uppercase font-bold tracking-wider text-slate-500 block">Quality Guarantee</span>
-                    <span className="text-xs font-bold text-[#1F3B6B]">10-Yr Hardware Standard</span>
-                  </div>
-                </div>
-
-                {/* Overlaid Floating Lower Architectural Tag */}
-                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md shadow-2xl border border-white/60 transition-all duration-300 hover:shadow-gold-sm animate-float-delayed z-20">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-[#EEC10E] block font-mono">
-                        ✦ Featured Execution
-                      </span>
-                      <h4 className="text-xs sm:text-sm font-bold text-[#1F3B6B]">
-                        Contemporary Penthouse & Modular Kitchen
-                      </h4>
-                    </div>
-                    <Link
-                      href="/projects"
-                      className="w-9 h-9 rounded-full bg-[#1F3B6B] text-white flex items-center justify-center flex-shrink-0 hover:bg-[#EEC10E] hover:text-[#1F3B6B] transition-colors duration-200 shadow-md"
-                      aria-label="View Project"
-                    >
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative Subtle Geometry */}
-              <div className="hero-orbit absolute -bottom-9 -left-10 -z-10 hidden h-36 w-36 rounded-full border border-[#EEC10E]/35 sm:block" aria-hidden="true">
-                <span className="hero-orbit-dot absolute -right-1 top-1/2 h-2.5 w-2.5 rounded-full bg-[#EEC10E] shadow-[0_0_18px_rgba(238,193,14,0.9)]" />
-              </div>
-              <div className="absolute -top-4 -right-4 w-32 h-32 bg-[#EEC10E]/20 rounded-full blur-2xl -z-10" />
-              <div className="absolute -bottom-4 -left-4 w-40 h-40 bg-[#1F3B6B]/15 rounded-full blur-2xl -z-10" />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <ThreeDIconBadge
+              type="shield"
+              subtitle="Durability Guarantee"
+              title="10-Year Marine Carcass Warranty"
+              description="100% Boiling Water Proof (IS:710 certified BWP) marine grade core substrate that never delaminates, warps, or rots in moisture-prone zones."
+              stat="IS:710 Certified"
+            />
+            <ThreeDIconBadge
+              type="speed"
+              subtitle="Execution Reliability"
+              title="Guaranteed 45-Day Handover"
+              description="Precision factory pre-fabrication enables rapid on-site assembly within days rather than chaotic months of traditional carpentry."
+              stat="Penalty Clause"
+            />
+            <ThreeDIconBadge
+              type="precision"
+              subtitle="Computerized Machining"
+              title="0.5mm Digital CNC Precision"
+              description="Computerized beam saws and multi-spindle drilling centers ensure immaculate alignment, zero-gap joints, and laser-accurate hinges."
+              stat="Homag CNC"
+            />
+            <ThreeDIconBadge
+              type="german"
+              subtitle="Zero-Joint Edge Sealing"
+              title="Moisture-Cured PUR Technology"
+              description="Seamless PUR edge banding bonds at microscopic molecular levels, completely preventing water penetration and steam swelling."
+              stat="Blum / Hettich"
+            />
+            <ThreeDIconBadge
+              type="sustainable"
+              subtitle="Eco-Friendly Substrates"
+              title="FSC Certified Sustainable Woods"
+              description="Ethically sourced plantation hardwoods and E1 low-emission resins ensure clean indoor air quality safe for families and children."
+              stat="Eco Conscious"
+            />
+            <ThreeDIconBadge
+              type="guarantee"
+              subtitle="Honest Pricing"
+              title="Itemized BOQ with Zero Hidden Fees"
+              description="Clear square-footage breakdowns based on actual core substrates and finishes. No arbitrary lump sums or mid-project surprises."
+              stat="Price Match"
+            />
           </div>
         </div>
       </section>
 
-      {/* SECTION 2: TRUST & CAPABILITIES METRICS */}
-      <section className="bg-white py-14 border-b border-slate-100 relative">
+      {/* SECTION 3: SPOTLIGHT PRODUCTS HORIZONTAL CAROUSEL (Inspired by scrolltide.co) */}
+      <SpotlightShowcase />
+
+      {/* SECTION 4: TRUST & CAPABILITIES METRICS */}
+      <section className="bg-white py-16 border-b border-stone-200/80 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
               {companyConfig.metrics.map((metric, idx) => (
                 <div
                   key={idx}
-                  className="group relative overflow-hidden p-6 rounded-2xl bg-slate-50/80 border border-slate-200/80 text-left transition-all duration-300 hover:-translate-y-1.5 shadow-navy-card hover:shadow-navy-elevated hover:border-[#EEC10E] hover:bg-white hardware-accelerated"
+                  className="group relative overflow-hidden p-6 sm:p-7 rounded-3xl bg-stone-50 border border-stone-200 text-left transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#EEC10E] hover:bg-white"
                 >
-                  {/* Top Gold Accent Line */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#EEC10E] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                  <div className="text-3xl sm:text-4xl font-black text-[#1F3B6B] tracking-tight group-hover:text-slate-900 transition-colors">
+                  <div className="text-3xl sm:text-5xl font-black text-[#1F3B6B] tracking-tight group-hover:text-stone-900 transition-colors">
                     <AnimatedCounter value={metric.value} />
                   </div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-slate-800 mt-1">
+                  <div className="text-xs font-bold uppercase tracking-wider text-stone-800 mt-2">
                     {metric.label}
                   </div>
-                  <div className="text-xs text-slate-500 mt-1 leading-normal">
+                  <div className="text-xs text-stone-500 mt-1 leading-normal">
                     {metric.description}
                   </div>
-                  {metric.isPlaceholder && (
-                    <div className="mt-2 text-[10px] text-slate-400 font-mono">
-                      [Configurable Business Metric]
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
@@ -301,18 +188,72 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 3: SERVICES */}
-      <section className="py-20 bg-slate-50/60 border-b border-slate-100">
+      {/* SECTION 5: INTERACTIVE DEEP INTERIOR EXPLORER */}
+      <section className="py-20 bg-stone-50/70 border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4 text-left">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
+              Interactive Spatial Engineering
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
+              Inspect Internal Joinery & Hardware Details
+            </h2>
+            <p className="text-xs sm:text-sm text-stone-600 mt-2">
+              Explore cabinet carcass joinery, Blum soft-closing drawer runners, and hidden wire channels in high fidelity.
+            </p>
+          </div>
+
+          <DeepInteriorExplorer />
+        </div>
+      </section>
+
+      {/* SECTION 6: BEFORE & AFTER SLIDER & MATERIAL VISUALIZER */}
+      <section className="py-20 bg-white border-b border-stone-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+          <div>
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
+                Turnkey Transformation
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
+                From Bare Shell to Architectural Reality
+              </h2>
+              <p className="text-xs sm:text-sm text-stone-600 mt-2">
+                Slide horizontally to see how raw civil spaces evolve into refined living environments with precision millwork.
+              </p>
+            </div>
+            <BeforeAfterSlider />
+          </div>
+
+          <div>
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
+                Finishes Library
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
+                Authentic Material Swatches & Surface Metrics
+              </h2>
+              <p className="text-xs sm:text-sm text-stone-600 mt-2">
+                Inspect scratch resistance, moisture tolerance, and lighting behavior across our premium finishes.
+              </p>
+            </div>
+            <MaterialFinishesVisualizer />
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: SERVICES OVERVIEW */}
+      <section className="py-20 bg-stone-50/60 border-b border-stone-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 text-left">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1F3B6B]/10 text-[#1F3B6B] text-xs font-bold uppercase tracking-wider mb-2">
-                <span>Our Capabilities</span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] tracking-tight">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
+                Our Capabilities
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] tracking-tight mt-1">
                 Comprehensive Interior & Modular Solutions
               </h2>
-              <p className="text-sm sm:text-base text-slate-600 mt-2 max-w-2xl">
+              <p className="text-sm sm:text-base text-stone-600 mt-2 max-w-2xl">
                 Every service is backed by rigorous space planning, 3D visualization, factory joinery production, and single-point project accountability.
               </p>
             </div>
@@ -325,41 +266,39 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Service Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {servicesData.map((service, idx) => (
               <ScrollReveal key={service.slug} delayMs={idx * 60}>
-                <div className="group bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-2xl hover:border-[#EEC10E]/60 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between h-full hardware-accelerated">
+                <div className="group bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-2xl hover:border-[#EEC10E]/60 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between h-full">
                   <div>
-                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
                       <Image
                         src={service.heroImage}
                         alt={service.title}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out hardware-accelerated"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#1F3B6B]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <div className="absolute top-3 left-3 bg-[#1F3B6B]/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md z-10">
                         {service.category}
                       </div>
                     </div>
                     <div className="p-5 text-left">
-                      <h3 className="font-bold text-base text-slate-900 group-hover:text-[#1F3B6B] transition-colors duration-200">
+                      <h3 className="font-bold text-base text-stone-900 group-hover:text-[#1F3B6B] transition-colors">
                         {service.title}
                       </h3>
-                      <p className="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">
+                      <p className="text-xs text-stone-600 mt-2 line-clamp-3 leading-relaxed">
                         {service.shortDescription}
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-5 pt-0 border-t border-slate-100 mt-2">
+                  <div className="p-5 pt-0 border-t border-stone-100 mt-3">
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center justify-between w-full text-xs font-bold text-[#1F3B6B] hover:text-[#EEC10E] pt-3 transition-colors duration-200"
+                      className="inline-flex items-center justify-between w-full text-xs font-bold text-[#1F3B6B] group-hover:text-[#EEC10E] pt-3 transition-colors"
                     >
-                      <span>Explore Service</span>
-                      <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-200" />
+                      <span>Explore Service Details</span>
+                      <ArrowRight className="w-4 h-4" />
                     </Link>
                   </div>
                 </div>
@@ -369,194 +308,63 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION: 3D DEEP INTERIOR EXPLORATION */}
-      <section id="deep-explore" className="py-20 bg-[#0B1526] text-white relative overflow-hidden border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEC10E]/15 text-[#EEC10E] text-xs font-bold uppercase tracking-wider mb-3 border border-[#EEC10E]/30 font-mono">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Scroll & Depth Exploration</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
-              Step Deep Inside Our Interior Architecture
-            </h2>
-            <p className="text-sm sm:text-base text-slate-300 mt-3 leading-relaxed">
-              Explore how each space transitions from macro architectural volume down to internal Blum runners and microscopic 0.5mm PUR moisture seals.
-            </p>
-          </div>
-
-          <DeepInteriorExplorer />
-        </div>
-      </section>
-
-      {/* SECTION: BEFORE & AFTER TRANSFORMATION EXPERIENCE */}
-      <section className="py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 border-b border-slate-100 relative overflow-hidden bg-architectural-dots">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <BeforeAfterSlider />
-        </div>
-      </section>
-
-      {/* SECTION 4: PRODUCTS & MODULAR SOLUTIONS */}
-      <section className="py-20 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
-              Precision Millwork Catalog
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
-              Modular Furniture Built for Modern Life
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-2">
-              Factory-manufactured modular cabinets, wardrobes, and executive desking engineered with moisture-curing PUR edge banding and high-durability substrates.
-            </p>
-          </div>
-
-          {/* Product Categories Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-            {productCategories.map((cat, idx) => (
-              <ScrollReveal key={cat.slug} delayMs={idx * 50}>
-                <Link
-                  href={`/products#${cat.slug}`}
-                  className="group p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-[#EEC10E] hover:bg-white transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl text-left flex flex-col justify-between h-full hardware-accelerated"
-                >
-                  <div>
-                    <div className="relative aspect-square w-full rounded-xl overflow-hidden mb-3 bg-slate-200">
-                      <Image
-                        src={cat.heroImage}
-                        alt={cat.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out hardware-accelerated"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#1F3B6B]/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                    </div>
-                    <h3 className="font-bold text-sm text-slate-900 group-hover:text-[#1F3B6B] transition-colors duration-200">
-                      {cat.name}
-                    </h3>
-                    <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                      {cat.description}
-                    </p>
-                  </div>
-                  <div className="mt-3 text-[11px] font-bold text-[#1F3B6B] flex items-center gap-1 group-hover:text-[#EEC10E] transition-colors duration-200">
-                    <span>View Range</span>
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-200" />
-                  </div>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-2 bg-[#1F3B6B] hover:bg-[#122442] text-white font-bold text-xs uppercase tracking-wider px-8 py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5"
-            >
-              <span>Explore Complete Furniture Catalog</span>
-              <ArrowRight className="w-4 h-4 text-[#EEC10E]" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION: TACTILE ARCHITECTURAL MATERIAL LIBRARY */}
-      <section className="py-20 bg-slate-950 text-white relative overflow-hidden border-b border-slate-850">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <MaterialFinishesVisualizer />
-        </div>
-      </section>
-
-      {/* SECTION 5: FEATURED PROJECTS WITH FILTERS */}
-      <section className="py-20 bg-slate-50/70 border-b border-slate-100">
+      {/* SECTION 8: PORTFOLIO SHOWCASE */}
+      <section className="py-20 bg-white border-b border-stone-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 text-left">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
-                Portfolio of Works
+                Executed Work
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
-                Featured Completed Projects
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] tracking-tight mt-1">
+                Completed Residences & Commercial Fit-Outs
               </h2>
-              <p className="text-sm text-slate-600 mt-1 max-w-xl">
-                Explore our residential and commercial interior transformations. Each space illustrates tailored spatial planning and materials.
-              </p>
             </div>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1F3B6B] hover:text-[#EEC10E] transition-colors duration-200"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1F3B6B] hover:text-[#EEC10E] transition-colors"
             >
               <span>View Full Portfolio</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
-            {[
-              "All Projects",
-              "Kitchens",
-              "Living Rooms",
-              "Bedrooms",
-              "Wardrobes",
-              "Office Interiors",
-              "Commercial Spaces",
-            ].map((filter) => (
-              <button
-                key={filter}
-                type="button"
-                onClick={() => setActiveProjectFilter(filter)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap hardware-accelerated ${
-                  activeProjectFilter === filter
-                    ? "bg-[#1F3B6B] text-white shadow-md"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:text-slate-900"
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-
-          {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project, idx) => (
+            {filteredProjects.slice(0, 3).map((project, idx) => (
               <ScrollReveal key={project.slug} delayMs={idx * 70}>
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="group bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-2xl hover:border-[#EEC10E]/60 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between h-full hardware-accelerated"
+                  className="group bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-2xl hover:border-[#EEC10E]/60 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between h-full"
                 >
                   <div>
-                    <div className="relative aspect-[16/11] w-full overflow-hidden bg-slate-100">
+                    <div className="relative aspect-[16/11] w-full overflow-hidden bg-stone-100">
                       <Image
                         src={project.thumbnail}
                         alt={project.title}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out hardware-accelerated"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#1F3B6B]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                       <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-[#1F3B6B] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm z-10">
                         {project.category}
                       </div>
-                      {project.isDemonstrationProject && (
-                        <div className="absolute bottom-3 right-3 bg-slate-900/85 text-white text-[9px] px-2 py-0.5 rounded font-mono z-10">
-                          Demo Portfolio Case
-                        </div>
-                      )}
                     </div>
                     <div className="p-5 text-left">
-                      <div className="text-[11px] text-slate-500 font-medium">
+                      <div className="text-[11px] text-stone-500 font-medium">
                         {project.location} • {project.area}
                       </div>
-                      <h3 className="font-bold text-base text-slate-900 mt-1 group-hover:text-[#1F3B6B] transition-colors duration-200">
+                      <h3 className="font-bold text-base text-stone-900 mt-1 group-hover:text-[#1F3B6B] transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-xs text-slate-600 mt-2 line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-stone-600 mt-2 line-clamp-2 leading-relaxed">
                         {project.designBrief}
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-5 pt-0 border-t border-slate-100 mt-2">
-                    <div className="inline-flex items-center justify-between w-full text-xs font-bold text-[#1F3B6B] group-hover:text-[#EEC10E] pt-3 transition-colors duration-200">
-                      <span>View Project Specifications</span>
-                      <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform duration-200" />
+                  <div className="p-5 pt-0 border-t border-stone-100 mt-2">
+                    <div className="inline-flex items-center justify-between w-full text-xs font-bold text-[#1F3B6B] group-hover:text-[#EEC10E] pt-3 transition-colors">
+                      <span>View Specifications & Blueprint</span>
+                      <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
                 </Link>
@@ -566,315 +374,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 6: WHY CHOOSE OFFICE ELEVATE */}
-      <section className="py-20 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
-              The Terraform Modular Difference
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
-              Engineered Precision. Architectural Design.
-            </h2>
-            <p className="text-sm sm:text-base text-slate-600 mt-2">
-              Why clients, architects, and corporate organizations trust us with their critical interior investments.
-            </p>
-          </div>
+      {/* SECTION 9: HIGH-CONVERTING CTA BANNER (Inspired by cta.gallery) */}
+      <CtaShowcase />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Ruler,
-                title: "Customized Space Planning",
-                desc: "No rigid template cabinets. Every module is modeled to your spatial dimensions and functional routines.",
-              },
-              {
-                icon: Layers,
-                title: "Certified Core Substrates",
-                desc: "IS:710 Marine BWP Plywood for wet zones and ultra-dense HDHMR boards that never swell or warp.",
-              },
-              {
-                icon: Cpu,
-                title: "Computerized Factory Precision",
-                desc: "Industrial beam saws and PUR edge banding maintain 0.5mm tolerances and water-sealed seams.",
-              },
-              {
-                icon: ShieldCheck,
-                title: "Transparent BOQ Quotations",
-                desc: "Itemized line items without hidden lump sums. You know exactly what substrates and hardware you pay for.",
-              },
-              {
-                icon: Factory,
-                title: "Fast, Dust-Free Installation",
-                desc: "Pre-fabricated knock-down units fit cleanly on-site within days, saving months of disruptive carpentry.",
-              },
-              {
-                icon: Sparkles,
-                title: "European Motion Hardware",
-                desc: "Tested Blum and Hettich soft-closing hinges and tandem boxes built for 100,000+ flawless operations.",
-              },
-              {
-                icon: Briefcase,
-                title: "Single Project Director",
-                desc: "Dedicated project manager coordinating civil, electrical, false ceiling, and modular teams.",
-              },
-              {
-                icon: CheckCircle2,
-                title: "Verified After-Sales Support",
-                desc: "Dedicated customer service team for hardware adjustments and long-term peace of mind.",
-              },
-            ].map((feature, idx) => {
-              const Icon = feature.icon;
-              return (
-                <ScrollReveal key={idx} delayMs={idx * 40}>
-                  <div className="group p-6 rounded-2xl bg-slate-50 border border-slate-200/70 hover:border-[#EEC10E] hover:bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl text-left h-full hardware-accelerated">
-                    <div className="w-11 h-11 rounded-xl bg-white text-[#1F3B6B] border border-slate-200 flex items-center justify-center mb-4 shadow-sm group-hover:scale-110 group-hover:border-[#EEC10E] transition-all duration-300 hardware-accelerated">
-                      <Icon className="w-5 h-5 text-[#EEC10E]" />
-                    </div>
-                    <h3 className="font-bold text-base text-slate-900 group-hover:text-[#1F3B6B] transition-colors duration-200">{feature.title}</h3>
-                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">{feature.desc}</p>
-                  </div>
-                </ScrollReveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 7: MANUFACTURING & CRAFTSMANSHIP */}
-      <section className="py-20 bg-[#122442] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
-            <div className="lg:col-span-7 space-y-4 text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
-                Industrial Manufacturing Standard
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-                Crafted in the Factory. Perfected at Your Space.
-              </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                By investing in computerized beam saws, throughfeed PUR edge banders, and multi-spindle boring machinery, Terraform Modular delivers consistent quality that traditional on-site carpenters cannot replicate.
-              </p>
-            </div>
-            <div className="lg:col-span-5 text-left lg:text-right">
-              <Link
-                href="/manufacturing"
-                className="inline-flex items-center gap-2 bg-[#EEC10E] hover:bg-[#D9AD09] text-[#1F3B6B] font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5 shadow-md"
-              >
-                <span>Tour Our Manufacturing Process</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-
-          {/* Manufacturing Step Highlights */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {manufacturingSteps.slice(0, 3).map((step, idx) => (
-              <ScrollReveal key={step.stepNumber} delayMs={idx * 100}>
-                <div className="group relative overflow-hidden bg-white/5 border border-white/10 hover:border-[#EEC10E]/80 rounded-2xl p-6 text-left hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(238,193,14,0.25)] flex flex-col justify-between h-full hardware-accelerated">
-                  {/* Light sweep on card hover */}
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
-
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-2xl font-black text-[#EEC10E] group-hover:scale-105 transition-transform duration-200">{step.stepNumber}</span>
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-slate-300 bg-white/10 group-hover:bg-[#EEC10E] group-hover:text-[#1F3B6B] transition-colors duration-200 px-2.5 py-1 rounded-md font-mono">
-                        Precision Phase
-                      </span>
-                    </div>
-                    <h3 className="font-bold text-lg text-white mb-1 group-hover:text-[#EEC10E] transition-colors duration-200">{step.title}</h3>
-                    <p className="text-xs text-slate-300 leading-relaxed mt-2">{step.description}</p>
-                  </div>
-                  <div className="mt-6 pt-4 border-t border-white/10 text-[11px] text-amber-300/90 font-medium flex items-center gap-2">
-                    <Sparkles className="w-3.5 h-3.5 text-[#EEC10E] flex-shrink-0" />
-                    <span>{step.technicalHighlight}</span>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <button
-              type="button"
-              onClick={() => setShowConsultModal(true)}
-              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-xl border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#EEC10E]/50"
-            >
-              <span>Discuss Your Custom Furniture Requirements</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#EEC10E]" />
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 8: HOW IT WORKS (6-STEP JOURNEY) */}
-      <section className="py-20 bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
-              Streamlined Experience
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
-              How Your Project Moves from Vision to Handover
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-2">
-              A transparent 6-stage project journey. Actual schedules depend on property scope, civil approvals, and site readiness.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                step: "01",
-                title: "Initial Consultation",
-                desc: "We explore your floor plan, family requirements, functional storage needs, and preferred aesthetic style.",
-              },
-              {
-                step: "02",
-                title: "Site Visit & Laser Audit",
-                desc: "Our architectural survey team takes laser measurements, audits wall levels, electrical points, and plumbing lines.",
-              },
-              {
-                step: "03",
-                title: "3D Design & Material Selection",
-                desc: "Explore photo-realistic 3D visualizations, touch physical laminate and veneer samples, and finalize fittings.",
-              },
-              {
-                step: "04",
-                title: "Quotation & Design Sign-off",
-                desc: "Transparent itemized BOQ with exact material specifications, hardware brands, and milestone payment schedules.",
-              },
-              {
-                step: "05",
-                title: "Factory Millwork Execution",
-                desc: "Computerized beam saw cutting, PUR edge sealing, boring, and trial assembly in our precision facility.",
-              },
-              {
-                step: "06",
-                title: "Installation & 7-Point Handover",
-                desc: "Clean knock-down on-site assembly, thorough quality snag audit, deep cleaning, and warranty key handover.",
-              },
-            ].map((item, idx) => (
-              <ScrollReveal key={idx} delayMs={idx * 50}>
-                <div className="group p-6 rounded-2xl bg-slate-50 border border-slate-200/80 text-left hover:border-[#1F3B6B] hover:bg-white hover:-translate-y-1.5 hover:shadow-xl transition-all duration-300 h-full hardware-accelerated relative overflow-hidden">
-                  <div className="text-3xl font-black text-[#1F3B6B] mb-2 group-hover:text-[#EEC10E] transition-colors duration-200">{item.step}</div>
-                  <h3 className="font-bold text-base text-slate-900 mb-1 group-hover:text-[#1F3B6B] transition-colors duration-200">{item.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 9: TESTIMONIALS & CLIENT TRUST */}
-      <section className="py-20 bg-slate-50/70 border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
-              Client Feedback
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
-              What Our Clients Say
-            </h2>
-            <p className="text-xs text-slate-500 mt-2 font-mono">
-              [Configurable Review Section: Verified project feedback published as projects are handed over]
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                quote:
-                  "Terraform Modular designed and installed our 3BHK modular kitchen and wardrobes. The PUR edge banding quality and Blum hardware operation are flawless.",
-                name: "Anand & Priya R.",
-                property: "Prestige Lakeview, Bangalore",
-                type: "Complete Home Interiors",
-              },
-              {
-                quote:
-                  "For our 60-seat tech office, we needed durable workstations and a statement boardroom table. Terraform Modular delivered right on schedule with zero site mess.",
-                name: "Vikram Mehta",
-                property: "Horizon Tech Office Fit-out",
-                type: "Corporate Office Interiors",
-              },
-              {
-                quote:
-                  "The transparent BOQ without hidden costs made decision-making simple. The 3D render matched the final handover down to the LED strip warmth.",
-                name: "Sneha Kulkarni",
-                property: "Sobha Dream Acres",
-                type: "Modular Kitchen & Wardrobes",
-              },
-            ].map((t, idx) => (
-              <ScrollReveal key={idx} delayMs={idx * 80}>
-                <div className="group p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-2xl hover:border-[#EEC10E]/60 transition-all duration-300 hover:-translate-y-1.5 text-left flex flex-col justify-between h-full hardware-accelerated">
-                  <div>
-                    <Quote className="w-8 h-8 text-[#EEC10E] mb-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
-                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
-                      &ldquo;{t.quote}&rdquo;
-                    </p>
-                  </div>
-                  <div className="mt-6 pt-4 border-t border-slate-100">
-                    <div className="font-bold text-sm text-[#1F3B6B]">{t.name}</div>
-                    <div className="text-xs text-slate-500 mt-0.5">{t.property}</div>
-                    <div className="text-[10px] text-amber-600 font-semibold uppercase tracking-wider mt-1">
-                      {t.type}
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 10: HIGH-IMPACT CONSULTATION CTA BANNER */}
-      <section className="py-24 bg-gradient-to-br from-[#122442] via-[#1F3B6B] to-[#0A1527] text-white relative overflow-hidden">
-        {/* Ambient Glows */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#EEC10E]/15 rounded-full blur-3xl animate-glow-pulse pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 bg-blueprint-grid opacity-15 pointer-events-none" />
-
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EEC10E]/20 text-[#EEC10E] text-xs font-bold uppercase tracking-wider border border-[#EEC10E]/30 font-mono">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Start Your Interior Journey</span>
-          </span>
-          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
-            Let&apos;s Create a Space That Works Beautifully for You.
-          </h2>
-          <p className="text-slate-200 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Tell us about your space, style and requirements. Our team will help you explore the right interior and furniture solutions with layout concepts and transparent pricing.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <button
-              type="button"
-              onClick={() => setShowConsultModal(true)}
-              className="relative overflow-hidden group w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#EEC10E] via-[#F3C920] to-[#E5B708] hover:from-[#E5B708] hover:to-[#D4A705] text-[#1F3B6B] font-black text-sm px-9 py-4 rounded-xl shadow-gold-md hover:shadow-gold-lg transition-all duration-300 transform hover:-translate-y-1"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                <span>Book a Consultation</span>
-                <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" />
-              </span>
-              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-            </button>
-
-            <a
-              href={getWhatsAppUrl("Hello Terraform Modular, I would like to book an interior design consultation.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white font-bold text-sm px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-            >
-              <MessageCircle className="w-5 h-5" />
-              <span>WhatsApp Us Directly</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 11: PRACTICAL FAQ ACCORDION */}
-      <section className="py-20 bg-white">
+      {/* SECTION 10: PRACTICAL FAQ ACCORDION */}
+      <section className="py-20 bg-stone-50/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
@@ -894,75 +398,34 @@ export default function HomePage() {
                   className={`rounded-2xl border transition-all duration-300 ${
                     isOpen
                       ? "border-[#EEC10E]/60 bg-white shadow-md"
-                      : "border-slate-200/80 bg-slate-50/50 hover:border-slate-300"
+                      : "border-stone-200/80 bg-white/70 hover:border-stone-300"
                   }`}
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-[#1F3B6B] hover:text-[#EEC10E] transition-colors duration-200"
+                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-[#1F3B6B] hover:text-[#EEC10E] transition-colors"
                     aria-expanded={isOpen}
                   >
                     <span>{item.q}</span>
                     <ChevronDown
-                      className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ease-out ${
-                        isOpen ? "rotate-180 text-amber-500" : "text-slate-400"
+                      className={`w-5 h-5 flex-shrink-0 transition-transform duration-200 ${
+                        isOpen ? "rotate-180 text-amber-500" : "text-stone-400"
                       }`}
                     />
                   </button>
 
-                  <div
-                    className={`grid transition-[grid-template-rows] duration-300 ease-out ${
-                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                    }`}
-                  >
-                    <div className="overflow-hidden">
-                      <div className="px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                        {item.a}
-                      </div>
+                  {isOpen && (
+                    <div className="px-5 pb-5 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100 pt-3">
+                      {item.a}
                     </div>
-                  </div>
+                  )}
                 </div>
               );
             })}
           </div>
         </div>
       </section>
-
-      {/* Consultation Modal */}
-      {showConsultModal && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 max-h-[92vh] overflow-y-auto relative shadow-2xl">
-            <button
-              type="button"
-              onClick={() => setShowConsultModal(false)}
-              className="absolute top-6 right-6 text-slate-400 hover:text-slate-800 text-lg font-bold w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center"
-            >
-              ✕
-            </button>
-            <div className="mb-6 text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
-                Direct Consultation Booking
-              </span>
-              <h3 className="text-2xl font-black text-[#1F3B6B] mt-1">
-                Book a Free Design Consultation
-              </h3>
-              <p className="text-xs text-slate-600 mt-1">
-                Fill in your details and an Terraform Modular interior consultant will contact you within 24 business hours.
-              </p>
-            </div>
-
-            <EnquiryForm
-              initialProjectType="Complete Home Interiors"
-              sourceContext="Homepage Hero Modal"
-              onSuccess={() => {
-                setTimeout(() => setShowConsultModal(false), 3000);
-              }}
-              compact={true}
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
