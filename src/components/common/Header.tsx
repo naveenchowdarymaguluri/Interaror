@@ -17,7 +17,6 @@ import {
   Briefcase,
   Factory,
   Calculator,
-  Search,
   ShoppingBag,
   Sparkles,
   BookOpen,
@@ -39,7 +38,6 @@ export default function Header() {
   const {
     cartCount,
     setIsCartOpen,
-    openSearch,
     openLookbook,
     isConsultationOpen,
     openConsultation,
@@ -319,19 +317,6 @@ export default function Header() {
 
           {/* Right Action Tools: Search, Basket, Consultation CTA */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Quick Search Trigger (Cmd+K) */}
-            <button
-              onClick={openSearch}
-              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold transition-all border border-stone-200/80"
-              aria-label="Search catalog"
-            >
-              <Search className="w-3.5 h-3.5 text-stone-500" />
-              <span className="hidden sm:inline text-stone-500 font-normal">Search...</span>
-              <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[9px] font-mono text-stone-400 bg-white rounded border border-stone-200">
-                ⌘K
-              </kbd>
-            </button>
-
             {/* Cart / Quote Basket Trigger */}
             <button
               onClick={() => setIsCartOpen(true)}
