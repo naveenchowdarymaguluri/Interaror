@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
@@ -13,42 +13,49 @@ import StickyBottomBar from "@/components/common/StickyBottomBar";
 import { StoreProvider } from "@/context/StoreContext";
 import { companyConfig } from "@/data/companyData";
 
-const manrope = Manrope({
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-manrope",
+  variable: "--font-jakarta",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Terraform Modular — Premium Interior Design & Modular Furniture",
+    default: "Terraform Modular — Architectural Modular Living & Luxury Joinery",
     template: "%s | Terraform Modular",
   },
   description:
-    "Thoughtfully designed spaces. Beautifully crafted interiors. Premium residential and commercial interior solutions, modular kitchens, wardrobes, and customized furniture manufacturing.",
+    "Terraform Modular crafts quiet luxury and bespoke architectural interiors. Factory-engineered modular kitchens, dressing sanctuaries, living monoliths, and turnkey architectural fit-outs.",
   keywords: [
     "Terraform Modular",
     "modular furniture",
-    "interior design Bangalore",
-    "modular kitchens",
-    "custom wardrobes",
-    "corporate office interiors",
-    "turnkey interior projects",
-    "furniture manufacturing",
+    "interior architecture",
+    "monolith kitchens",
+    "bespoke dressing rooms",
+    "luxury joinery",
+    "architectural interiors",
+    "turnkey fit-outs",
   ],
-  authors: [{ name: "Terraform Modular Design Studio" }],
+  authors: [{ name: "Terraform Modular Atelier" }],
   creator: "Terraform Modular",
   publisher: "Terraform Modular",
-  metadataBase: new URL("https://officeelevate.com"),
+  metadataBase: new URL("https://terraformmodular.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Terraform Modular — Thoughtfully Designed Spaces. Beautifully Crafted Interiors.",
+    title: "Terraform Modular — Architectural Modular Living & Quiet Luxury",
     description:
-      "From modular kitchens and custom wardrobes to complete home and office interiors, Terraform Modular brings together thoughtful design, quality craftsmanship, and functional solutions.",
-    url: "https://officeelevate.com",
+      "Bespoke modular interior architecture crafted with precision engineering, Italian concealed hardware, and hand-selected natural stones.",
+    url: "https://terraformmodular.com",
     siteName: "Terraform Modular",
     locale: "en_IN",
     type: "website",
@@ -63,9 +70,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Terraform Modular — Premium Interior Design & Modular Furniture",
+    title: "Terraform Modular — Architectural Modular Living",
     description:
-      "Thoughtfully designed residential and commercial spaces with factory-engineered modular furniture solutions.",
+      "Factory-engineered modular interior architecture and bespoke joinery.",
     images: ["/images/terraform-modular-logo.png"],
   },
   robots: {
@@ -86,8 +93,8 @@ export default function RootLayout({
     name: companyConfig.name,
     legalName: "Terraform Modular",
     description: companyConfig.tagline,
-    url: "https://officeelevate.com",
-    logo: "https://officeelevate.com/images/terraform-modular-logo.png",
+    url: "https://terraformmodular.com",
+    logo: "https://terraformmodular.com/images/terraform-modular-logo.png",
     telephone: companyConfig.phone,
     email: companyConfig.email,
     address: {
@@ -113,18 +120,18 @@ export default function RootLayout({
         closes: "19:00",
       },
     ],
-    priceRange: "₹₹₹",
+    priceRange: "₹₹₹₹",
   };
 
   return (
-    <html lang="en" className={`${manrope.variable} h-full scroll-smooth`}>
+    <html lang="en" className={`${playfair.variable} ${plusJakarta.variable} h-full scroll-smooth`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans bg-[#FEFEFE] text-[#1F3B6B] antialiased selection:bg-[#EEC10E] selection:text-[#1F3B6B]">
+      <body className="min-h-full flex flex-col font-sans bg-[#FBF9F5] text-[#1B1C1A] antialiased selection:bg-[#EEC10E] selection:text-[#122442]">
         <StoreProvider>
           <ScrollProgressBar />
           <Header />

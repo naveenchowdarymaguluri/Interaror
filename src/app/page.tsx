@@ -33,7 +33,7 @@ import ScrollReveal from "@/components/common/ScrollReveal";
 import DeepInteriorExplorer from "@/components/interactive/DeepInteriorExplorer";
 import BeforeAfterSlider from "@/components/interactive/BeforeAfterSlider";
 import MaterialFinishesVisualizer from "@/components/interactive/MaterialFinishesVisualizer";
-import HeroShowroom from "@/components/interactive/HeroShowroom";
+import AtelierHomeShowcase from "@/components/interactive/AtelierHomeShowcase";
 import SpotlightShowcase from "@/components/interactive/SpotlightShowcase";
 import ThreeDIconBadge from "@/components/interactive/ThreeDIconBadge";
 import CtaShowcase from "@/components/interactive/CtaShowcase";
@@ -93,21 +93,21 @@ export default function HomePage() {
       : projectsData.filter((p) => p.category === activeProjectFilter);
 
   return (
-    <div className="flex flex-col w-full bg-[#FEFEFE]">
-      {/* SECTION 1: INTERACTIVE HERO SHOWROOM (Inspired by supahero.io & styles.refero.design) */}
-      <HeroShowroom />
+    <div className="flex flex-col w-full bg-[#FBF9F5]">
+      {/* SECTION 1: FLAGSHIP ATELIER ARCHITECTURAL SHOWCASE (Stitch Platform Design System) */}
+      <AtelierHomeShowcase />
 
-      {/* SECTION 2: 3D ISOMETRIC VALUE PROPOSITIONS (Inspired by 3dicons.co) */}
-      <section className="py-20 bg-stone-100/60 border-b border-stone-200/80">
+      {/* SECTION 2: 3D ISOMETRIC VALUE PROPOSITIONS */}
+      <section className="py-20 bg-stone-100/60 border-b border-[#CDC5BC]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#EEC10E] block">
+            <span className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-[#EEC10E] block">
               Architectural Standards
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 mt-1 tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-[#122442] mt-1 tracking-tight">
               Why Discerning Homeowners Choose Terraform
             </h2>
-            <p className="text-sm sm:text-base text-stone-600 mt-2">
+            <p className="font-sans text-sm sm:text-base text-[#4A463F] mt-2">
               Factory-milled modular furniture combining aerospace-grade machinery tolerances with European hardware excellence.
             </p>
           </div>
@@ -159,26 +159,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 3: SPOTLIGHT PRODUCTS HORIZONTAL CAROUSEL (Inspired by scrolltide.co) */}
+      {/* SECTION 3: SPOTLIGHT PRODUCTS HORIZONTAL CAROUSEL */}
       <SpotlightShowcase />
 
       {/* SECTION 4: TRUST & CAPABILITIES METRICS */}
-      <section className="bg-white py-16 border-b border-stone-200/80 relative">
+      <section className="bg-white py-16 border-b border-[#CDC5BC]/30 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
               {companyConfig.metrics.map((metric, idx) => (
                 <div
                   key={idx}
-                  className="group relative overflow-hidden p-6 sm:p-7 rounded-3xl bg-stone-50 border border-stone-200 text-left transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-[#EEC10E] hover:bg-white"
+                  className="group relative overflow-hidden p-6 sm:p-7 rounded-2xl bg-[#F5F3EF] border border-[#CDC5BC]/30 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[#EEC10E] hover:bg-white"
                 >
-                  <div className="text-3xl sm:text-5xl font-black text-[#1F3B6B] tracking-tight group-hover:text-stone-900 transition-colors">
+                  <div className="font-serif text-3xl sm:text-5xl font-normal text-[#122442] tracking-tight group-hover:text-stone-900 transition-colors">
                     <AnimatedCounter value={metric.value} />
                   </div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-stone-800 mt-2">
+                  <div className="font-sans text-xs font-bold uppercase tracking-wider text-stone-800 mt-2">
                     {metric.label}
                   </div>
-                  <div className="text-xs text-stone-500 mt-1 leading-normal">
+                  <div className="font-sans text-xs text-stone-500 mt-1 leading-normal">
                     {metric.description}
                   </div>
                 </div>
@@ -189,16 +189,16 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 5: INTERACTIVE DEEP INTERIOR EXPLORER */}
-      <section className="py-20 bg-stone-50/70 border-b border-stone-200/80">
+      <section className="py-20 bg-[#FBF9F5] border-b border-[#CDC5BC]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
+            <span className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-[#EEC10E]">
               Interactive Spatial Engineering
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#122442] mt-1 tracking-tight">
               Inspect Internal Joinery & Hardware Details
             </h2>
-            <p className="text-xs sm:text-sm text-stone-600 mt-2">
+            <p className="font-sans text-xs sm:text-sm text-[#4A463F] mt-2">
               Explore cabinet carcass joinery, Blum soft-closing drawer runners, and hidden wire channels in high fidelity.
             </p>
           </div>
@@ -208,17 +208,17 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 6: BEFORE & AFTER SLIDER & MATERIAL VISUALIZER */}
-      <section className="py-20 bg-white border-b border-stone-200/80">
+      <section className="py-20 bg-white border-b border-[#CDC5BC]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
           <div>
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
+              <span className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-[#EEC10E]">
                 Turnkey Transformation
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#122442] mt-1 tracking-tight">
                 From Bare Shell to Architectural Reality
               </h2>
-              <p className="text-xs sm:text-sm text-stone-600 mt-2">
+              <p className="font-sans text-xs sm:text-sm text-[#4A463F] mt-2">
                 Slide horizontally to see how raw civil spaces evolve into refined living environments with precision millwork.
               </p>
             </div>
@@ -227,13 +227,13 @@ export default function HomePage() {
 
           <div>
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
+              <span className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-[#EEC10E]">
                 Finishes Library
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#122442] mt-1 tracking-tight">
                 Authentic Material Swatches & Surface Metrics
               </h2>
-              <p className="text-xs sm:text-sm text-stone-600 mt-2">
+              <p className="font-sans text-xs sm:text-sm text-[#4A463F] mt-2">
                 Inspect scratch resistance, moisture tolerance, and lighting behavior across our premium finishes.
               </p>
             </div>
@@ -243,23 +243,23 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 7: SERVICES OVERVIEW */}
-      <section className="py-20 bg-stone-50/60 border-b border-stone-200/80">
+      <section className="py-20 bg-[#F5F3EF] border-b border-[#CDC5BC]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 text-left">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
+              <span className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-[#EEC10E]">
                 Our Capabilities
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] tracking-tight mt-1">
+              <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#122442] tracking-tight mt-1">
                 Comprehensive Interior & Modular Solutions
               </h2>
-              <p className="text-sm sm:text-base text-stone-600 mt-2 max-w-2xl">
+              <p className="font-sans text-sm sm:text-base text-[#4A463F] mt-2 max-w-2xl">
                 Every service is backed by rigorous space planning, 3D visualization, factory joinery production, and single-point project accountability.
               </p>
             </div>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1F3B6B] hover:text-[#EEC10E] transition-colors"
+              className="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-wider text-[#122442] hover:text-[#EEC10E] transition-colors"
             >
               <span>Explore All Services</span>
               <ArrowRight className="w-4 h-4" />
@@ -269,7 +269,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {servicesData.map((service, idx) => (
               <ScrollReveal key={service.slug} delayMs={idx * 60}>
-                <div className="group bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-2xl hover:border-[#EEC10E]/60 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between h-full">
+                <div className="group bg-white rounded-2xl overflow-hidden border border-[#CDC5BC]/30 shadow-sm hover:shadow-2xl hover:border-[#EEC10E]/60 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between h-full">
                   <div>
                     <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
                       <Image
@@ -278,15 +278,15 @@ export default function HomePage() {
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute top-3 left-3 bg-[#1F3B6B]/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md z-10">
+                      <div className="absolute top-3 left-3 bg-[#122442]/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md z-10">
                         {service.category}
                       </div>
                     </div>
                     <div className="p-5 text-left">
-                      <h3 className="font-bold text-base text-stone-900 group-hover:text-[#1F3B6B] transition-colors">
+                      <h3 className="font-serif font-medium text-lg text-stone-900 group-hover:text-[#122442] transition-colors">
                         {service.title}
                       </h3>
-                      <p className="text-xs text-stone-600 mt-2 line-clamp-3 leading-relaxed">
+                      <p className="font-sans text-xs text-[#4A463F] mt-2 line-clamp-3 leading-relaxed">
                         {service.shortDescription}
                       </p>
                     </div>
@@ -295,7 +295,7 @@ export default function HomePage() {
                   <div className="p-5 pt-0 border-t border-stone-100 mt-3">
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center justify-between w-full text-xs font-bold text-[#1F3B6B] group-hover:text-[#EEC10E] pt-3 transition-colors"
+                      className="inline-flex items-center justify-between w-full font-sans text-xs font-bold text-[#122442] group-hover:text-[#EEC10E] pt-3 transition-colors"
                     >
                       <span>Explore Service Details</span>
                       <ArrowRight className="w-4 h-4" />
@@ -309,20 +309,20 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 8: PORTFOLIO SHOWCASE */}
-      <section className="py-20 bg-white border-b border-stone-200/80">
+      <section className="py-20 bg-white border-b border-[#CDC5BC]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 text-left">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
+              <span className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-[#EEC10E]">
                 Executed Work
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] tracking-tight mt-1">
+              <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#122442] tracking-tight mt-1">
                 Completed Residences & Commercial Fit-Outs
               </h2>
             </div>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1F3B6B] hover:text-[#EEC10E] transition-colors"
+              className="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-wider text-[#122442] hover:text-[#EEC10E] transition-colors"
             >
               <span>View Full Portfolio</span>
               <ArrowRight className="w-4 h-4" />
@@ -334,7 +334,7 @@ export default function HomePage() {
               <ScrollReveal key={project.slug} delayMs={idx * 70}>
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="group bg-white rounded-3xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-2xl hover:border-[#EEC10E]/60 transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between h-full"
+                  className="group bg-white rounded-2xl overflow-hidden border border-[#CDC5BC]/30 shadow-sm hover:shadow-2xl hover:border-[#EEC10E]/60 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between h-full"
                 >
                   <div>
                     <div className="relative aspect-[16/11] w-full overflow-hidden bg-stone-100">
@@ -344,25 +344,25 @@ export default function HomePage() {
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
-                      <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-[#1F3B6B] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm z-10">
+                      <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-[#122442] text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm z-10">
                         {project.category}
                       </div>
                     </div>
                     <div className="p-5 text-left">
-                      <div className="text-[11px] text-stone-500 font-medium">
+                      <div className="font-sans text-[11px] text-stone-500 font-medium">
                         {project.location} • {project.area}
                       </div>
-                      <h3 className="font-bold text-base text-stone-900 mt-1 group-hover:text-[#1F3B6B] transition-colors">
+                      <h3 className="font-serif font-medium text-lg text-stone-900 mt-1 group-hover:text-[#122442] transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-xs text-stone-600 mt-2 line-clamp-2 leading-relaxed">
+                      <p className="font-sans text-xs text-[#4A463F] mt-2 line-clamp-2 leading-relaxed">
                         {project.designBrief}
                       </p>
                     </div>
                   </div>
 
                   <div className="p-5 pt-0 border-t border-stone-100 mt-2">
-                    <div className="inline-flex items-center justify-between w-full text-xs font-bold text-[#1F3B6B] group-hover:text-[#EEC10E] pt-3 transition-colors">
+                    <div className="inline-flex items-center justify-between w-full font-sans text-xs font-bold text-[#122442] group-hover:text-[#EEC10E] pt-3 transition-colors">
                       <span>View Specifications & Blueprint</span>
                       <ArrowRight className="w-4 h-4" />
                     </div>
@@ -374,17 +374,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 9: HIGH-CONVERTING CTA BANNER (Inspired by cta.gallery) */}
+      {/* SECTION 9: HIGH-CONVERTING CTA BANNER */}
       <CtaShowcase />
 
       {/* SECTION 10: PRACTICAL FAQ ACCORDION */}
-      <section className="py-20 bg-stone-50/50">
+      <section className="py-20 bg-[#F5F3EF]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#EEC10E]">
+            <span className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-[#EEC10E]">
               Frequently Asked Questions
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1F3B6B] mt-1 tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[#122442] mt-1 tracking-tight">
               Practical Answers on Process, Quality & Cost
             </h2>
           </div>
@@ -395,16 +395,16 @@ export default function HomePage() {
               return (
                 <div
                   key={idx}
-                  className={`rounded-2xl border transition-all duration-300 ${
+                  className={`rounded-xl border transition-all duration-300 ${
                     isOpen
                       ? "border-[#EEC10E]/60 bg-white shadow-md"
-                      : "border-stone-200/80 bg-white/70 hover:border-stone-300"
+                      : "border-[#CDC5BC]/40 bg-white/80 hover:border-stone-300"
                   }`}
                 >
                   <button
                     type="button"
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-[#1F3B6B] hover:text-[#EEC10E] transition-colors"
+                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-sans font-bold text-sm sm:text-base text-[#122442] hover:text-[#EEC10E] transition-colors"
                     aria-expanded={isOpen}
                   >
                     <span>{item.q}</span>
@@ -416,7 +416,7 @@ export default function HomePage() {
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 pb-5 text-xs sm:text-sm text-stone-600 leading-relaxed border-t border-stone-100 pt-3">
+                    <div className="px-5 pb-5 font-sans text-xs sm:text-sm text-[#4A463F] leading-relaxed border-t border-stone-100 pt-3">
                       {item.a}
                     </div>
                   )}
